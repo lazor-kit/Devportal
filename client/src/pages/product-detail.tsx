@@ -10,7 +10,7 @@ import {
 import TagBadge from "@/components/tag-badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Github, ExternalLink, ChevronLeft, Share2 } from "lucide-react";
+import { Github, ExternalLink, ChevronLeft, Share2, Twitter } from "lucide-react";
 import { Product } from "@shared/schema";
 import ProductCard from "@/components/product-card";
 
@@ -124,7 +124,7 @@ const ProductDetail = () => {
                   ))}
                 </div>
                 
-                <div className="flex space-x-4">
+                <div className="flex flex-wrap gap-4">
                   <a
                     href={product.githubLink}
                     target="_blank"
@@ -143,6 +143,17 @@ const ProductDetail = () => {
                     <ExternalLink className="mr-1.5 h-4 w-4" />
                     Live Demo
                   </a>
+                  {product.twitterLink && (
+                    <a
+                      href={product.twitterLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-sm text-primary hover:text-primary-dark"
+                    >
+                      <Twitter className="mr-1.5 h-4 w-4" />
+                      Twitter
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
