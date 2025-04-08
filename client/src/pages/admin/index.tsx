@@ -66,7 +66,13 @@ const AdminDashboard = () => {
 
   // Fetch products based on tab
   const { data: products = [], isLoading } = useQuery<Product[]>({
-    queryKey: [`/api/admin/products?status=${activeTab}`],
+    queryKey: ['/api/admin/products', { status: activeTab }],
+    queryFn: async ({ queryKey }) => {
+      const [baseUrl, params] = queryKey;
+      const status = (params as any).status;
+      const res = await apiRequest('GET', `${baseUrl}?status=${status}`);
+      return res.json();
+    },
     enabled: !!user?.isAdmin,
   });
 
@@ -77,8 +83,8 @@ const AdminDashboard = () => {
       return response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/admin/products"] });
-      queryClient.invalidateQueries({ queryKey: ["/api/products"] });
+      queryClient.invalidateQueries({ queryKey: ['/api/admin/products'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/products'] });
       
       toast({
         title: `Product ${actionDialog.action === "approve" ? "approved" : "rejected"}`,
