@@ -85,7 +85,7 @@ const NavigationBar = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <Button asChild variant="ghost" className="border border-primary/20 text-primary hover:bg-primary/10">
+              <Button asChild className="crypto-button">
                 <Link href="/admin/login">
                   <a>Admin Login</a>
                 </Link>
@@ -143,7 +143,7 @@ const NavigationBar = () => {
                   ) : (
                     <Link href="/admin/login">
                       <a
-                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-black/40 hover:text-white"
+                        className="crypto-button block px-3 py-2 rounded-md text-base font-medium text-center"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         Admin Login

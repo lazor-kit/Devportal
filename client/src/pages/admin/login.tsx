@@ -52,16 +52,16 @@ const AdminLogin = () => {
   return (
     <div className="min-h-[80vh] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        <h2 className="mt-6 text-center text-3xl font-extrabold glow-text">
           Admin Login
         </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
+        <p className="mt-2 text-center text-sm text-gray-300">
           Sign in to access the admin dashboard
         </p>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <Card>
+        <Card className="card border-glow">
           <CardContent className="pt-6">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -103,7 +103,7 @@ const AdminLogin = () => {
                     <Checkbox id="remember-me" />
                     <label
                       htmlFor="remember-me"
-                      className="ml-2 block text-sm text-gray-900"
+                      className="ml-2 block text-sm text-gray-300"
                     >
                       Remember me
                     </label>
@@ -121,7 +121,7 @@ const AdminLogin = () => {
 
                 <Button
                   type="submit"
-                  className="w-full"
+                  className="w-full crypto-button"
                   disabled={form.formState.isSubmitting}
                 >
                   {form.formState.isSubmitting ? "Signing in..." : "Sign in"}

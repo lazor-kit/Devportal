@@ -79,16 +79,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // 1. Authentication
   app.post('/api/login', async (req, res) => {
     try {
-      const data = loginScÏÏhema.parse(req.body);
+      const data = loginSchema.parse(req.body);
       const user = await storage.getUserByUsername(data.username);
 
       if (!user) {
         return res.status(401).json({ message: 'Invalid username or password' });
       }
 
-      // In a real app, you'd compare hashed passwords
-      // In this mock app, we'll compare plain text for simplicity
-      if (user.password !== data.password) {
+      // Compare hashed password
+      const isPasswordValid = await bcrypt.compare(data.password, user.password);
+      if (!isPasswordValid) {
         return res.status(401).json({ message: 'Invalid username or password' });
       }
 
