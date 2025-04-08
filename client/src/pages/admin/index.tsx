@@ -140,8 +140,8 @@ const AdminDashboard = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
-          <p className="text-gray-600">Review and manage submitted projects</p>
+          <h1 className="text-2xl font-bold glow-text">Admin Dashboard</h1>
+          <p className="text-slate-300">Review and manage submitted projects</p>
         </div>
 
         <Tabs defaultValue="pending" value={activeTab} onValueChange={setActiveTab}>
@@ -198,10 +198,10 @@ const AdminDashboard = () => {
                                   />
                                 </div>
                                 <div className="ml-4">
-                                  <div className="text-sm font-medium text-gray-900">
+                                  <div className="text-sm font-medium text-primary">
                                     {product.name}
                                   </div>
-                                  <div className="text-sm text-gray-500 line-clamp-1">
+                                  <div className="text-sm text-slate-400 line-clamp-1">
                                     {product.description}
                                   </div>
                                 </div>
@@ -214,13 +214,13 @@ const AdminDashboard = () => {
                                     {product.submittedBy[0].toUpperCase()}
                                   </AvatarFallback>
                                 </Avatar>
-                                <div className="text-sm text-gray-900">
+                                <div className="text-sm text-primary">
                                   {product.submittedBy}
                                 </div>
                               </div>
                             </TableCell>
                             <TableCell>
-                              <div className="text-sm text-gray-500">
+                              <div className="text-sm text-slate-400">
                                 {new Date(product.createdAt).toLocaleDateString()}
                               </div>
                             </TableCell>
@@ -230,7 +230,7 @@ const AdminDashboard = () => {
                                   product.status === productStatus.PENDING
                                     ? "outline"
                                     : product.status === productStatus.APPROVED
-                                    ? "success"
+                                    ? "secondary"
                                     : "destructive"
                                 }
                               >
@@ -311,7 +311,7 @@ const AdminDashboard = () => {
                   </div>
                   <div className="space-y-2">
                     <h3 className="text-lg font-semibold">{actionDialog.product.name}</h3>
-                    <p className="text-sm text-gray-600">{actionDialog.product.description}</p>
+                    <p className="text-sm text-slate-300">{actionDialog.product.description}</p>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {actionDialog.product.tags.map((tag) => (
                         <Badge key={tag} variant="outline">
