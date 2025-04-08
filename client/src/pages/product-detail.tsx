@@ -10,7 +10,7 @@ import {
 import TagBadge from "@/components/tag-badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Github, ExternalLink, ChevronLeft, Share2, Twitter } from "lucide-react";
+import { Github, ExternalLink, ChevronLeft, Share2, X } from "lucide-react";
 import { Product } from "@shared/schema";
 import ProductCard from "@/components/product-card";
 
@@ -150,8 +150,8 @@ const ProductDetail = () => {
                       rel="noopener noreferrer"
                       className="inline-flex items-center text-sm text-primary hover:text-primary-dark"
                     >
-                      <Twitter className="mr-1.5 h-4 w-4" />
-                      Twitter
+                      <X className="mr-1.5 h-4 w-4" />
+                      X Account
                     </a>
                   )}
                 </div>
