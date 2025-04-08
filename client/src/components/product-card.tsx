@@ -11,7 +11,7 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <Card className="card group overflow-hidden h-full relative backdrop-blur-sm">
+    <Card className="card border-glow group overflow-hidden h-full relative backdrop-blur-sm">
       <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       <Link href={`/product/${product.id}`}>
         <a className="block h-full">
@@ -25,7 +25,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           </div>
           <CardContent className="p-5 relative z-10">
             <div className="flex justify-between items-start">
-              <h3 className="text-lg font-semibold text-white line-clamp-1 group-hover:text-primary transition-colors duration-200">
+              <h3 className="text-lg font-semibold glow-text line-clamp-1 group-hover:text-primary transition-colors duration-200">
                 {product.name}
               </h3>
               {product.createdAt && new Date(product.createdAt).getTime() > Date.now() - 7 * 24 * 60 * 60 * 1000 && (

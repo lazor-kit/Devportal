@@ -15,7 +15,7 @@ import { Product } from "@shared/schema";
 import ProductCard from "@/components/product-card";
 
 const ProductDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const productId = parseInt(id);
 
   const { data: product, isLoading, error } = useQuery<Product>({
@@ -41,15 +41,15 @@ const ProductDetail = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex justify-center">
           <div className="w-full max-w-4xl animate-pulse">
-            <div className="h-64 bg-gray-200 rounded-t-lg"></div>
+            <div className="h-64 bg-gray-800 rounded-t-lg"></div>
             <div className="p-6 space-y-4">
-              <div className="h-8 bg-gray-200 rounded w-1/3"></div>
-              <div className="h-4 bg-gray-200 rounded w-full"></div>
-              <div className="h-4 bg-gray-200 rounded w-full"></div>
-              <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+              <div className="h-8 bg-gray-800 rounded w-1/3"></div>
+              <div className="h-4 bg-gray-800 rounded w-full"></div>
+              <div className="h-4 bg-gray-800 rounded w-full"></div>
+              <div className="h-4 bg-gray-800 rounded w-3/4"></div>
               <div className="flex space-x-2">
-                <div className="h-6 bg-gray-200 rounded w-16"></div>
-                <div className="h-6 bg-gray-200 rounded w-16"></div>
+                <div className="h-6 bg-gray-800 rounded w-16"></div>
+                <div className="h-6 bg-gray-800 rounded w-16"></div>
               </div>
             </div>
           </div>
@@ -64,12 +64,12 @@ const ProductDetail = () => {
         <Card>
           <CardContent className="p-6">
             <div className="text-center py-10">
-              <h3 className="text-lg font-medium text-gray-900">Product not found</h3>
-              <p className="mt-2 text-sm text-gray-500">
+              <h3 className="text-lg font-medium glow-text">Product not found</h3>
+              <p className="mt-2 text-sm text-slate-400">
                 The product you're looking for doesn't exist or has been removed.
               </p>
               <Link href="/">
-                <Button className="mt-4">
+                <Button className="mt-4 crypto-button">
                   <ChevronLeft className="mr-2 h-4 w-4" />
                   Back to all projects
                 </Button>
@@ -97,7 +97,7 @@ const ProductDetail = () => {
             </div>
             <div className="p-6 md:w-1/2">
               <div className="flex justify-between items-start">
-                <h1 className="text-2xl font-bold text-gray-900">{product.name}</h1>
+                <h1 className="text-2xl font-bold glow-text">{product.name}</h1>
                 {isNew && (
                   <Badge variant="secondary" className="bg-green-100 text-green-800 hover:bg-green-200">
                     New
@@ -110,8 +110,8 @@ const ProductDetail = () => {
                   <AvatarFallback>{product.submittedBy[0].toUpperCase()}</AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="text-sm font-medium text-gray-900">{product.submittedBy}</p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm font-medium text-primary">{product.submittedBy}</p>
+                  <p className="text-sm text-slate-400">
                     Submitted on {new Date(product.createdAt).toLocaleDateString()}
                   </p>
                 </div>
@@ -129,7 +129,7 @@ const ProductDetail = () => {
                     href={product.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm text-gray-700 hover:text-primary"
+                    className="inline-flex items-center text-sm text-primary hover:text-primary-dark"
                   >
                     <Github className="mr-1.5 h-4 w-4" />
                     GitHub Repository
@@ -138,7 +138,7 @@ const ProductDetail = () => {
                     href={product.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm text-gray-700 hover:text-primary"
+                    className="inline-flex items-center text-sm text-primary hover:text-primary-dark"
                   >
                     <ExternalLink className="mr-1.5 h-4 w-4" />
                     Live Demo
@@ -148,16 +148,16 @@ const ProductDetail = () => {
             </div>
           </div>
           
-          <CardContent className="p-6 border-t border-gray-200 space-y-6">
+          <CardContent className="p-6 border-t border-gray-800 space-y-6">
             <div>
-              <h3 className="text-lg font-medium text-gray-900">Description</h3>
-              <div className="mt-2 text-gray-600 space-y-4">
+              <h3 className="text-lg font-medium glow-text">Description</h3>
+              <div className="mt-2 text-slate-300 space-y-4">
                 <p>{product.description}</p>
               </div>
             </div>
           </CardContent>
           
-          <CardFooter className="px-6 py-4 bg-gray-50 border-t border-gray-200">
+          <CardFooter className="px-6 py-4 bg-background border-t border-gray-800">
             <div className="flex justify-between items-center w-full">
               <Link href="/">
                 <a className="text-primary hover:text-primary-dark inline-flex items-center">
@@ -165,7 +165,7 @@ const ProductDetail = () => {
                   Back to all projects
                 </a>
               </Link>
-              <Button variant="outline" size="sm" className="inline-flex items-center">
+              <Button variant="outline" size="sm" className="inline-flex items-center crypto-button-outline">
                 <Share2 className="mr-1.5 h-4 w-4" />
                 Share
               </Button>
@@ -175,8 +175,8 @@ const ProductDetail = () => {
         
         {relatedProducts.length > 0 && (
           <Card>
-            <CardHeader className="border-b border-gray-200">
-              <h3 className="text-lg font-medium text-gray-900">Related Projects</h3>
+            <CardHeader className="border-b border-gray-800">
+              <h3 className="text-lg font-medium glow-text">Related Projects</h3>
             </CardHeader>
             <CardContent className="p-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
