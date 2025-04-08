@@ -11,6 +11,7 @@ export const availableTags = [
   "gaming",
   "wallet",
   "governance",
+  "marketplace",
   "other"
 ] as const;
 

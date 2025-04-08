@@ -7,6 +7,9 @@ import {
   type InsertProduct,
   productStatus
 } from "@shared/schema";
+import { db } from "./db";
+import { eq, like, and, or, desc, sql, inArray } from "drizzle-orm";
+import { log } from "./vite";
 
 export interface IStorage {
   // Users
@@ -25,112 +28,181 @@ export interface IStorage {
   searchProducts(query: string): Promise<Product[]>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<number, User>;
-  private products: Map<number, Product>;
-  private userCurrentId: number;
-  private productCurrentId: number;
-
-  constructor() {
-    this.users = new Map();
-    this.products = new Map();
-    this.userCurrentId = 1;
-    this.productCurrentId = 1;
-
-    // Create default admin user
-    this.createUser({
-      username: "admin",
-      password: "adminpass",
-      isAdmin: true
-    });
-  }
-
+export class DatabaseStorage implements IStorage {
   // User methods
   async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
+    try {
+      const [user] = await db.select().from(users).where(eq(users.id, id));
+      return user;
+    } catch (error: any) {
+      log(`Error in getUser: ${error}`, "storage");
+      return undefined;
+    }
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username
-    );
+    try {
+      const [user] = await db.select().from(users).where(eq(users.username, username));
+      return user;
+    } catch (error: any) {
+      log(`Error in getUserByUsername: ${error}`, "storage");
+      return undefined;
+    }
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.userCurrentId++;
-    const now = new Date();
-    const user: User = { 
-      ...insertUser, 
-      id,
-      createdAt: now
-    };
-    this.users.set(id, user);
-    return user;
+    try {
+      const [user] = await db.insert(users).values(insertUser).returning();
+      return user;
+    } catch (error: any) {
+      log(`Error in createUser: ${error}`, "storage");
+      throw new Error(`Failed to create user: ${error.message}`);
+    }
   }
 
   // Product methods
   async getAllProducts(): Promise<Product[]> {
-    return Array.from(this.products.values());
+    try {
+      const allProducts = await db
+        .select()
+        .from(products)
+        .orderBy(desc(products.createdAt));
+      return allProducts;
+    } catch (error: any) {
+      log(`Error in getAllProducts: ${error}`, "storage");
+      return [];
+    }
   }
 
   async getApprovedProducts(): Promise<Product[]> {
-    return Array.from(this.products.values()).filter(
-      (product) => product.status === productStatus.APPROVED
-    );
+    try {
+      const approvedProducts = await db
+        .select()
+        .from(products)
+        .where(eq(products.status, productStatus.APPROVED))
+        .orderBy(desc(products.createdAt));
+      return approvedProducts;
+    } catch (error: any) {
+      log(`Error in getApprovedProducts: ${error}`, "storage");
+      return [];
+    }
   }
 
   async getProductById(id: number): Promise<Product | undefined> {
-    return this.products.get(id);
+    try {
+      const [product] = await db
+        .select()
+        .from(products)
+        .where(eq(products.id, id));
+      return product;
+    } catch (error: any) {
+      log(`Error in getProductById: ${error}`, "storage");
+      return undefined;
+    }
   }
 
   async getProductsByStatus(status: string): Promise<Product[]> {
-    return Array.from(this.products.values()).filter(
-      (product) => product.status === status
-    );
+    try {
+      const filteredProducts = await db
+        .select()
+        .from(products)
+        .where(eq(products.status, status))
+        .orderBy(desc(products.createdAt));
+      return filteredProducts;
+    } catch (error: any) {
+      log(`Error in getProductsByStatus: ${error}`, "storage");
+      return [];
+    }
   }
 
   async getProductsByTag(tag: string): Promise<Product[]> {
-    return Array.from(this.products.values()).filter(
-      (product) => product.tags.includes(tag) && product.status === productStatus.APPROVED
-    );
+    try {
+      // We need to find products where the tag is in the array of tags
+      const filteredProducts = await db
+        .select()
+        .from(products)
+        .where(
+          and(
+            eq(products.status, productStatus.APPROVED),
+            sql`${tag} = ANY(${products.tags})`
+          )
+        )
+        .orderBy(desc(products.createdAt));
+      return filteredProducts;
+    } catch (error: any) {
+      log(`Error in getProductsByTag: ${error}`, "storage");
+      return [];
+    }
   }
 
   async createProduct(insertProduct: InsertProduct): Promise<Product> {
-    const id = this.productCurrentId++;
-    const now = new Date();
-    const product: Product = {
-      ...insertProduct,
-      id,
-      status: productStatus.PENDING,
-      createdAt: now,
-      updatedAt: now
-    };
-    this.products.set(id, product);
-    return product;
+    try {
+      // All new products start as pending
+      const now = new Date();
+      const productWithDefaults = {
+        ...insertProduct,
+        status: productStatus.PENDING,
+        createdAt: now,
+        updatedAt: now
+      };
+      
+      const [product] = await db
+        .insert(products)
+        .values(productWithDefaults)
+        .returning();
+        
+      return product;
+    } catch (error: any) {
+      log(`Error in createProduct: ${error}`, "storage");
+      throw new Error(`Failed to create product: ${error.message}`);
+    }
   }
 
   async updateProductStatus(id: number, status: string): Promise<Product | undefined> {
-    const product = this.products.get(id);
-    if (!product) return undefined;
-
-    const updatedProduct: Product = {
-      ...product,
-      status,
-      updatedAt: new Date()
-    };
-    this.products.set(id, updatedProduct);
-    return updatedProduct;
+    try {
+      const now = new Date();
+      const [updatedProduct] = await db
+        .update(products)
+        .set({ 
+          status, 
+          updatedAt: now 
+        })
+        .where(eq(products.id, id))
+        .returning();
+        
+      return updatedProduct;
+    } catch (error: any) {
+      log(`Error in updateProductStatus: ${error}`, "storage");
+      return undefined;
+    }
   }
 
   async searchProducts(query: string): Promise<Product[]> {
-    const searchTermLower = query.toLowerCase();
-    return Array.from(this.products.values()).filter(
-      (product) => 
-        (product.name.toLowerCase().includes(searchTermLower) || 
-         product.description.toLowerCase().includes(searchTermLower)) &&
-        product.status === productStatus.APPROVED
-    );
+    try {
+      const searchTermLower = `%${query.toLowerCase()}%`;
+      
+      const searchResults = await db
+        .select()
+        .from(products)
+        .where(
+          and(
+            eq(products.status, productStatus.APPROVED),
+            or(
+              like(sql`LOWER(${products.name})`, searchTermLower),
+              like(sql`LOWER(${products.description})`, searchTermLower)
+              // Note: For tags, we would need a more complex query
+            )
+          )
+        )
+        .orderBy(desc(products.createdAt));
+        
+      return searchResults;
+    } catch (error: any) {
+      log(`Error in searchProducts: ${error}`, "storage");
+      return [];
+    }
   }
 }
 
-export const storage = new MemStorage();
+// Initialize with database storage
+export const storage = new DatabaseStorage();
