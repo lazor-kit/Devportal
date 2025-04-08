@@ -244,35 +244,41 @@ const AdminDashboard = () => {
                               </Badge>
                             </TableCell>
                             <TableCell className="text-right">
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                onClick={() => openDialog(product, "view")}
-                                className="mr-2"
-                              >
-                                <Eye className="h-4 w-4" />
-                              </Button>
-                              
-                              {product.status === productStatus.PENDING && (
-                                <>
+                              <div className="flex justify-end items-center">
+                                <div className="mr-2">
                                   <Button
-                                    variant="ghost"
+                                    variant="outline"
                                     size="sm"
-                                    onClick={() => openDialog(product, "approve")}
-                                    className="text-green-600 hover:text-green-900 mr-2"
+                                    onClick={() => openDialog(product, "view")}
                                   >
-                                    <Check className="h-4 w-4" />
+                                    <Eye className="h-4 w-4 mr-1" />
+                                    View
                                   </Button>
-                                  <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    onClick={() => openDialog(product, "reject")}
-                                    className="text-red-600 hover:text-red-900"
-                                  >
-                                    <X className="h-4 w-4" />
-                                  </Button>
-                                </>
-                              )}
+                                </div>
+                                
+                                {product.status === productStatus.PENDING && (
+                                  <div className="flex space-x-2">
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      onClick={() => openDialog(product, "approve")}
+                                      className="text-green-600 hover:text-green-900"
+                                    >
+                                      <Check className="h-4 w-4 mr-1" />
+                                      Approve
+                                    </Button>
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      onClick={() => openDialog(product, "reject")}
+                                      className="text-red-600 hover:text-red-900"
+                                    >
+                                      <X className="h-4 w-4 mr-1" />
+                                      Reject
+                                    </Button>
+                                  </div>
+                                )}
+                              </div>
                             </TableCell>
                           </TableRow>
                         ))}

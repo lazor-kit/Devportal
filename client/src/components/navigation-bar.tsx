@@ -34,25 +34,23 @@ const NavigationBar = () => {
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/">
-                <div className="cursor-pointer flex items-center gap-2">
-                  <Zap className="h-6 w-6 text-primary" />
-                  <span className="text-xl font-bold glow-text">CryptoShowcase</span>
-                </div>
+              <Link href="/" className="cursor-pointer flex items-center gap-2">
+                <Zap className="h-6 w-6 text-primary" />
+                <span className="text-xl font-bold glow-text">CryptoShowcase</span>
               </Link>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               {navLinks.map((link) => (
-                <Link key={link.href} href={link.href}>
-                  <a
-                    className={`${
-                      isActiveLink(link.href)
-                        ? "border-primary text-primary"
-                        : "border-transparent text-gray-400 hover:border-gray-500 hover:text-gray-200"
-                    } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium h-full`}
-                  >
-                    {link.name}
-                  </a>
+                <Link 
+                  key={link.href} 
+                  href={link.href}
+                  className={`${
+                    isActiveLink(link.href)
+                      ? "border-primary text-primary"
+                      : "border-transparent text-gray-400 hover:border-gray-500 hover:text-gray-200"
+                  } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium h-full`}
+                >
+                  {link.name}
                 </Link>
               ))}
             </div>
@@ -74,8 +72,8 @@ const NavigationBar = () => {
                 <DropdownMenuContent align="end" className="bg-black/80 backdrop-blur-md border border-white/10">
                   {user.isAdmin && (
                     <DropdownMenuItem asChild className="text-gray-200 hover:text-white focus:text-white">
-                      <Link href="/admin">
-                        <a className="w-full cursor-pointer">Admin Dashboard</a>
+                      <Link href="/admin" className="w-full cursor-pointer">
+                        Admin Dashboard
                       </Link>
                     </DropdownMenuItem>
                   )}
@@ -86,9 +84,7 @@ const NavigationBar = () => {
               </DropdownMenu>
             ) : (
               <Button asChild className="crypto-button">
-                <Link href="/admin/login">
-                  <a>Admin Login</a>
-                </Link>
+                <Link href="/admin/login">Admin Login</Link>
               </Button>
             )}
           </div>
@@ -104,29 +100,28 @@ const NavigationBar = () => {
               <SheetContent side="left" className="bg-black/90 backdrop-blur-md border-r border-white/10">
                 <div className="flex flex-col space-y-4 py-4">
                   {navLinks.map((link) => (
-                    <Link key={link.href} href={link.href}>
-                      <a
-                        className={`${
-                          isActiveLink(link.href)
-                            ? "bg-primary/20 text-primary"
-                            : "text-gray-300 hover:bg-black/40 hover:text-white"
-                        } block px-3 py-2 rounded-md text-base font-medium`}
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {link.name}
-                      </a>
+                    <Link 
+                      key={link.href} 
+                      href={link.href}
+                      className={`${
+                        isActiveLink(link.href)
+                          ? "bg-primary/20 text-primary"
+                          : "text-gray-300 hover:bg-black/40 hover:text-white"
+                      } block px-3 py-2 rounded-md text-base font-medium`}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {link.name}
                     </Link>
                   ))}
                   {user ? (
                     <>
                       {user.isAdmin && (
-                        <Link href="/admin">
-                          <a
-                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-black/40 hover:text-white"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            Admin Dashboard
-                          </a>
+                        <Link 
+                          href="/admin"
+                          className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-black/40 hover:text-white"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Admin Dashboard
                         </Link>
                       )}
                       <Button
@@ -141,13 +136,12 @@ const NavigationBar = () => {
                       </Button>
                     </>
                   ) : (
-                    <Link href="/admin/login">
-                      <a
-                        className="crypto-button block px-3 py-2 rounded-md text-base font-medium text-center"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        Admin Login
-                      </a>
+                    <Link 
+                      href="/admin/login"
+                      className="crypto-button block px-3 py-2 rounded-md text-base font-medium text-center"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Admin Login
                     </Link>
                   )}
                 </div>
