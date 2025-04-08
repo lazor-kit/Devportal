@@ -74,14 +74,14 @@ const Submit = () => {
   
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">Submit Your Project</h1>
-          <p className="text-gray-600">Share your innovative web application with the community</p>
+      <div className="space-y-6 flex flex-col items-center">
+        <div className="text-center w-full max-w-3xl">
+          <h1 className="text-3xl font-bold glow-text">Submit Your Project</h1>
+          <p className="text-slate-300 mt-2">Share your innovative web application with the community</p>
         </div>
         
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 max-w-3xl">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full max-w-3xl">
             <Card>
               <CardContent className="p-6 space-y-6">
                 <FormField
@@ -89,7 +89,7 @@ const Submit = () => {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Project Name *</FormLabel>
+                      <FormLabel className="text-slate-200">Project Name *</FormLabel>
                       <FormControl>
                         <Input placeholder="My Amazing Project" {...field} />
                       </FormControl>
@@ -103,7 +103,7 @@ const Submit = () => {
                   name="description"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Description *</FormLabel>
+                      <FormLabel className="text-slate-200">Description *</FormLabel>
                       <FormControl>
                         <Textarea 
                           placeholder="Describe your project, its features and what problem it solves..." 
@@ -111,7 +111,7 @@ const Submit = () => {
                           {...field} 
                         />
                       </FormControl>
-                      <FormDescription>
+                      <FormDescription className="text-slate-400">
                         Brief description for your project. Maximum 500 characters.
                       </FormDescription>
                       <FormMessage />
@@ -124,7 +124,7 @@ const Submit = () => {
                   name="image"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Project Image *</FormLabel>
+                      <FormLabel className="text-slate-200">Project Image *</FormLabel>
                       <FormControl>
                         <FormFileInput
                           name="image"
@@ -145,7 +145,7 @@ const Submit = () => {
                     name="githubLink"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>GitHub Repository Link *</FormLabel>
+                        <FormLabel className="text-slate-200">GitHub Repository Link *</FormLabel>
                         <FormControl>
                           <div className="relative">
                             <Github className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
@@ -166,7 +166,7 @@ const Submit = () => {
                     name="demoLink"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Demo App Link *</FormLabel>
+                        <FormLabel className="text-slate-200">Demo App Link *</FormLabel>
                         <FormControl>
                           <div className="relative">
                             <ExternalLink className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
@@ -188,7 +188,7 @@ const Submit = () => {
                   name="submittedBy"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Your Name</FormLabel>
+                      <FormLabel className="text-slate-200">Your Name</FormLabel>
                       <FormControl>
                         <Input 
                           placeholder="Your name (optional)" 
@@ -205,8 +205,8 @@ const Submit = () => {
                   name="tags"
                   render={() => (
                     <FormItem>
-                      <FormLabel>Tags *</FormLabel>
-                      <FormDescription>
+                      <FormLabel className="text-slate-200">Tags *</FormLabel>
+                      <FormDescription className="text-slate-400">
                         Select categories that best describe your project
                       </FormDescription>
                       <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
@@ -235,7 +235,7 @@ const Submit = () => {
                                       }}
                                     />
                                   </FormControl>
-                                  <FormLabel className="font-normal">
+                                  <FormLabel className="font-normal text-slate-300">
                                     {tag.charAt(0).toUpperCase() + tag.slice(1)}
                                   </FormLabel>
                                 </FormItem>
@@ -253,7 +253,7 @@ const Submit = () => {
                   control={form.control}
                   name="termsAccepted"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 pt-4 border-t border-gray-200">
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 pt-4 border-t border-slate-700">
                       <FormControl>
                         <Checkbox
                           checked={field.value}
@@ -261,10 +261,10 @@ const Submit = () => {
                         />
                       </FormControl>
                       <div className="space-y-1 leading-none">
-                        <FormLabel>
+                        <FormLabel className="text-slate-200">
                           I agree to the terms and conditions
                         </FormLabel>
-                        <FormDescription>
+                        <FormDescription className="text-slate-400">
                           By submitting, you confirm that you have the rights to share this project and agree to our{" "}
                           <a href="#" className="text-primary hover:text-primary-dark">
                             Terms of Service
