@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import { apiRequest } from "@/lib/queryClient";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { 
   Form, 
@@ -22,6 +21,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { dappSubmissionSchema, DappSubmission, availableTags } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
 import { Github, ExternalLink, Twitter } from "lucide-react";
+import { RichTextEditor } from "@/components/ui/rich-text-editor";
 
 const Submit = () => {
   const [, navigate] = useLocation();
@@ -106,14 +106,15 @@ const Submit = () => {
                     <FormItem>
                       <FormLabel className="text-slate-200">Description *</FormLabel>
                       <FormControl>
-                        <Textarea 
-                          placeholder="Describe your dApp, its features and what problem it solves on Solana..." 
-                          rows={4} 
-                          {...field} 
+                        <RichTextEditor
+                          value={field.value}
+                          onChange={field.onChange}
+                          placeholder="Describe your dApp, its features and what problem it solves on Solana..."
+                          className="crypto-input"
                         />
                       </FormControl>
                       <FormDescription className="text-slate-400">
-                        Brief description for your Solana dApp. Maximum 500 characters.
+                        Brief description for your Solana dApp. You can format your text with bold, italics, bullet points and more.
                       </FormDescription>
                       <FormMessage />
                     </FormItem>

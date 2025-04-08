@@ -244,4 +244,82 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
   }
+  
+  /* Rich text content styling */
+  .rich-text-content {
+    @apply text-slate-300;
+  }
+  
+  .rich-text-content p {
+    @apply mb-4;
+  }
+  
+  .rich-text-content h1, 
+  .rich-text-content h2, 
+  .rich-text-content h3, 
+  .rich-text-content h4 {
+    @apply font-bold glow-text mt-6 mb-4;
+  }
+  
+  .rich-text-content h1 {
+    @apply text-2xl;
+  }
+  
+  .rich-text-content h2 {
+    @apply text-xl;
+  }
+  
+  .rich-text-content h3 {
+    @apply text-lg;
+  }
+  
+  .rich-text-content ul {
+    @apply list-disc pl-6 mb-4;
+  }
+  
+  .rich-text-content ol {
+    @apply list-decimal pl-6 mb-4;
+  }
+  
+  .rich-text-content li {
+    @apply mb-1;
+  }
+  
+  .rich-text-content strong {
+    @apply font-bold text-white;
+  }
+  
+  .rich-text-content em {
+    @apply italic text-slate-200;
+  }
+  
+  .rich-text-content a {
+    @apply text-primary underline hover:text-primary/80;
+  }
+  
+  .rich-text-content blockquote {
+    @apply border-l-4 border-primary/30 pl-4 italic my-4 text-slate-400;
+  }
+  
+  .rich-text-content code {
+    @apply bg-black/50 px-1.5 py-0.5 rounded text-primary font-mono text-sm;
+  }
+  
+  .rich-text-content pre {
+    @apply bg-black/50 p-4 rounded-md mb-4 overflow-x-auto;
+  }
+  
+  .rich-text-content pre code {
+    @apply bg-transparent p-0 text-slate-300;
+  }
+  
+  /* Tiptap editor styles */
+  .ProseMirror {
+    @apply outline-none min-h-[150px] p-4 text-slate-300;
+  }
+  
+  .ProseMirror p.is-editor-empty:first-child::before {
+    @apply text-slate-500 float-left h-0 pointer-events-none;
+    content: attr(data-placeholder);
+  }
 }

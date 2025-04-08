@@ -162,9 +162,10 @@ const ProductDetail = () => {
           <CardContent className="p-6 border-t border-gray-800 space-y-6">
             <div>
               <h3 className="text-lg font-medium glow-text">Description</h3>
-              <div className="mt-2 text-slate-300 space-y-4">
-                <p>{product.description}</p>
-              </div>
+              <div 
+                className="mt-2 text-slate-300 space-y-4 rich-text-content"
+                dangerouslySetInnerHTML={{ __html: product.description }}
+              />
             </div>
           </CardContent>
           
