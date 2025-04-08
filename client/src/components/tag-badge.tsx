@@ -5,59 +5,89 @@ interface TagColors {
   [key: string]: {
     bg: string;
     text: string;
+    border: string;
     hoverBg: string;
     hoverText: string;
+    icon?: React.ReactNode;
   };
 }
 
+// Import all the icons we need
+import { 
+  CircleDollarSign, 
+  Wallet, 
+  Layers, 
+  Gamepad2, 
+  ShieldCheck, 
+  Users, 
+  Component, 
+  Tag 
+} from "lucide-react";
+
 const tagColors: TagColors = {
   defi: {
-    bg: "bg-blue-100",
-    text: "text-blue-800",
-    hoverBg: "hover:bg-blue-200",
-    hoverText: "hover:text-blue-900",
+    bg: "bg-blue-950/40",
+    text: "text-blue-400",
+    border: "border-blue-500/30",
+    hoverBg: "hover:bg-blue-900/50",
+    hoverText: "hover:text-blue-300",
+    icon: <CircleDollarSign className="h-3 w-3 mr-1" />,
   },
   payment: {
-    bg: "bg-green-100",
-    text: "text-green-800",
-    hoverBg: "hover:bg-green-200",
-    hoverText: "hover:text-green-900",
+    bg: "bg-emerald-950/40",
+    text: "text-emerald-400",
+    border: "border-emerald-500/30",
+    hoverBg: "hover:bg-emerald-900/50",
+    hoverText: "hover:text-emerald-300",
+    icon: <CircleDollarSign className="h-3 w-3 mr-1" />,
   },
   nft: {
-    bg: "bg-pink-100",
-    text: "text-pink-800",
-    hoverBg: "hover:bg-pink-200",
-    hoverText: "hover:text-pink-900",
+    bg: "bg-fuchsia-950/40",
+    text: "text-fuchsia-400",
+    border: "border-fuchsia-500/30",
+    hoverBg: "hover:bg-fuchsia-900/50",
+    hoverText: "hover:text-fuchsia-300",
+    icon: <Layers className="h-3 w-3 mr-1" />,
   },
   dao: {
-    bg: "bg-purple-100",
-    text: "text-purple-800",
-    hoverBg: "hover:bg-purple-200",
-    hoverText: "hover:text-purple-900",
+    bg: "bg-purple-950/40",
+    text: "text-purple-400",
+    border: "border-purple-500/30",
+    hoverBg: "hover:bg-purple-900/50",
+    hoverText: "hover:text-purple-300",
+    icon: <Users className="h-3 w-3 mr-1" />,
   },
   gaming: {
-    bg: "bg-red-100",
-    text: "text-red-800",
-    hoverBg: "hover:bg-red-200",
-    hoverText: "hover:text-red-900",
+    bg: "bg-red-950/40",
+    text: "text-red-400",
+    border: "border-red-500/30",
+    hoverBg: "hover:bg-red-900/50",
+    hoverText: "hover:text-red-300",
+    icon: <Gamepad2 className="h-3 w-3 mr-1" />,
   },
   wallet: {
-    bg: "bg-orange-100",
-    text: "text-orange-800",
-    hoverBg: "hover:bg-orange-200",
-    hoverText: "hover:text-orange-900",
+    bg: "bg-amber-950/40",
+    text: "text-amber-400",
+    border: "border-amber-500/30",
+    hoverBg: "hover:bg-amber-900/50",
+    hoverText: "hover:text-amber-300",
+    icon: <Wallet className="h-3 w-3 mr-1" />,
   },
   governance: {
-    bg: "bg-indigo-100",
-    text: "text-indigo-800",
-    hoverBg: "hover:bg-indigo-200",
-    hoverText: "hover:text-indigo-900",
+    bg: "bg-indigo-950/40",
+    text: "text-indigo-400",
+    border: "border-indigo-500/30",
+    hoverBg: "hover:bg-indigo-900/50",
+    hoverText: "hover:text-indigo-300",
+    icon: <ShieldCheck className="h-3 w-3 mr-1" />,
   },
   other: {
-    bg: "bg-gray-100",
-    text: "text-gray-800",
-    hoverBg: "hover:bg-gray-200",
-    hoverText: "hover:text-gray-900",
+    bg: "bg-gray-950/40",
+    text: "text-gray-400",
+    border: "border-gray-500/30",
+    hoverBg: "hover:bg-gray-900/50",
+    hoverText: "hover:text-gray-300",
+    icon: <Tag className="h-3 w-3 mr-1" />,
   },
 };
 
@@ -70,17 +100,23 @@ interface TagBadgeProps {
 
 const TagBadge = ({ tag, onClick, className = "", active = false }: TagBadgeProps) => {
   const colors = tagColors[tag] || tagColors.other;
-  const baseClasses = "text-xs font-medium rounded-full transition-colors duration-200";
+  
+  // Define the base classes
+  const baseClasses = "text-xs font-medium rounded-full px-2.5 py-0.5 transition-all duration-200 border flex items-center";
+  
+  // Define the color classes based on active state
   const colorClasses = active 
-    ? `bg-primary text-white hover:bg-primary/90` 
-    : `${colors.bg} ${colors.text} ${colors.hoverBg} ${colors.hoverText}`;
+    ? `bg-primary/20 text-primary border-primary/40 hover:bg-primary/30` 
+    : `${colors.bg} ${colors.text} ${colors.border} ${colors.hoverBg} ${colors.hoverText}`;
   
   return (
     <Badge
-      variant="secondary"
+      variant="outline"
       className={`${baseClasses} ${colorClasses} ${onClick ? 'cursor-pointer' : ''} ${className}`}
       onClick={onClick}
     >
+      {!active && colors.icon}
+      {active && <Component className="h-3 w-3 mr-1" />}
       {tag.charAt(0).toUpperCase() + tag.slice(1)}
     </Badge>
   );

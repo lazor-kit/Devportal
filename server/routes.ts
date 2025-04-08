@@ -79,7 +79,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // 1. Authentication
   app.post('/api/login', async (req, res) => {
     try {
-      const data = loginSchema.parse(req.body);
+      const data = loginScÏÏhema.parse(req.body);
       const user = await storage.getUserByUsername(data.username);
 
       if (!user) {
