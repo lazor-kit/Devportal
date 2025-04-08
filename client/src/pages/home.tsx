@@ -4,10 +4,10 @@ import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import TagFilter from "@/components/tag-filter";
 import ViewToggle, { ViewMode } from "@/components/view-toggle";
-import ProductCard from "@/components/product-card";
+import DappCard from "@/components/product-card";
 import ProductListItem from "@/components/product-list-item";
 import Pagination from "@/components/pagination";
-import { Product, ProductTag } from "@shared/schema";
+import { Product, Dapp, ProductTag, DappTag } from "@shared/schema";
 import { Search } from "lucide-react";
 import { useDebounce } from "@/hooks/use-mobile";
 
@@ -59,8 +59,8 @@ const Home = () => {
       <div className="space-y-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
           <div>
-            <h1 className="text-2xl font-bold glow-text">Discover Projects</h1>
-            <p className="text-slate-300">Browse innovative web applications from the developer community</p>
+            <h1 className="text-2xl font-bold solana-text">Discover Solana dApps</h1>
+            <p className="text-slate-300">Browse innovative Solana blockchain applications from the developer community</p>
           </div>
           <div className="flex space-x-2">
             <TagFilter
@@ -81,7 +81,7 @@ const Home = () => {
           </div>
           <Input
             type="text"
-            placeholder="Search projects..."
+            placeholder="Search dApps..."
             className="pl-10"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -128,7 +128,7 @@ const Home = () => {
         {/* No Results */}
         {!isLoading && filteredProducts.length === 0 && (
           <div className="text-center py-12">
-            <h3 className="mt-2 text-sm font-semibold text-primary">No projects found</h3>
+            <h3 className="mt-2 text-sm font-semibold solana-text">No dApps found</h3>
             <p className="mt-1 text-sm text-slate-400">
               Try adjusting your search or filter to find what you're looking for.
             </p>
@@ -139,7 +139,7 @@ const Home = () => {
         {!isLoading && viewMode === "grid" && paginatedProducts.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {paginatedProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <DappCard key={product.id} product={product} />
             ))}
           </div>
         )}

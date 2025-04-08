@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import { db } from "./db";
-import { users, products, productStatus } from "@shared/schema";
+import { users, dapps, productStatus } from "@shared/schema";
 import { log } from "./vite";
 import { eq } from "drizzle-orm/expressions";
 
@@ -27,20 +27,21 @@ async function seed() {
       log("Admin user already exists, skipping creation", "seed");
     }
 
-    // Check if we have any products
-    const existingProducts = await db.select().from(products);
+    // Check if we have any dapps
+    const existingDapps = await db.select().from(dapps);
     
-    if (existingProducts.length === 0) {
-      log("Creating sample products...", "seed");
+    if (existingDapps.length === 0) {
+      log("Creating sample dapps...", "seed");
       
-      // Sample products
-      const sampleProducts = [
+      // Sample dapps
+      const sampleDapps = [
         {
           name: "Crypto Payment Gateway",
           description: "A secure payment gateway that accepts multiple cryptocurrencies for e-commerce websites.",
           image: "https://i.imgur.com/123fakeimage.jpg",
           githubLink: "https://github.com/fakerepo/payment-gateway",
           demoLink: "https://demo.fakepayment.crypto",
+          twitterLink: "https://twitter.com/cryptoPayGate",
           submittedBy: "cryptoDev",
           tags: ["payment", "defi"],
           status: productStatus.APPROVED,
@@ -53,6 +54,7 @@ async function seed() {
           image: "https://i.imgur.com/456fakeimage.jpg",
           githubLink: "https://github.com/fakerepo/nft-market",
           demoLink: "https://demo.nftmarket.crypto",
+          twitterLink: "https://twitter.com/nftmarketplace",
           submittedBy: "nftCreator",
           tags: ["nft", "marketplace"],
           status: productStatus.APPROVED,
@@ -65,6 +67,7 @@ async function seed() {
           image: "https://i.imgur.com/789fakeimage.jpg",
           githubLink: "https://github.com/fakerepo/yield-aggregator",
           demoLink: "https://demo.yieldagg.finance",
+          twitterLink: "https://twitter.com/defiYieldAgg",
           submittedBy: "defiDev",
           tags: ["defi", "yield"],
           status: productStatus.APPROVED,
@@ -77,6 +80,7 @@ async function seed() {
           image: "https://i.imgur.com/101fakeimage.jpg",
           githubLink: "https://github.com/fakerepo/portfolio-tracker",
           demoLink: "https://demo.cryptofolio.app",
+          twitterLink: "https://twitter.com/cryptoPortfolio",
           submittedBy: "trackerDev",
           tags: ["wallet", "defi"],
           status: productStatus.PENDING,
@@ -85,14 +89,14 @@ async function seed() {
         }
       ];
       
-      // Insert sample products
-      for (const product of sampleProducts) {
-        await db.insert(products).values(product);
+      // Insert sample dapps
+      for (const dapp of sampleDapps) {
+        await db.insert(dapps).values(dapp);
       }
       
-      log("Sample products created successfully", "seed");
+      log("Sample dapps created successfully", "seed");
     } else {
-      log("Products already exist, skipping creation", "seed");
+      log("Dapps already exist, skipping creation", "seed");
     }
 
     log("Database seeding completed successfully", "seed");

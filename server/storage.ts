@@ -1,6 +1,6 @@
 import {
   users,
-  products,
+  dapps,
   type User,
   type Product,
   type InsertUser,
@@ -65,8 +65,8 @@ export class DatabaseStorage implements IStorage {
     try {
       const allProducts = await db
         .select()
-        .from(products)
-        .orderBy(desc(products.createdAt));
+        .from(dapps)
+        .orderBy(desc(dapps.createdAt));
       return allProducts;
     } catch (error: any) {
       log(`Error in getAllProducts: ${error}`, "storage");
@@ -78,9 +78,9 @@ export class DatabaseStorage implements IStorage {
     try {
       const approvedProducts = await db
         .select()
-        .from(products)
-        .where(eq(products.status, productStatus.APPROVED))
-        .orderBy(desc(products.createdAt));
+        .from(dapps)
+        .where(eq(dapps.status, productStatus.APPROVED))
+        .orderBy(desc(dapps.createdAt));
       return approvedProducts;
     } catch (error: any) {
       log(`Error in getApprovedProducts: ${error}`, "storage");
@@ -92,8 +92,8 @@ export class DatabaseStorage implements IStorage {
     try {
       const [product] = await db
         .select()
-        .from(products)
-        .where(eq(products.id, id));
+        .from(dapps)
+        .where(eq(dapps.id, id));
       return product;
     } catch (error: any) {
       log(`Error in getProductById: ${error}`, "storage");
@@ -105,9 +105,9 @@ export class DatabaseStorage implements IStorage {
     try {
       const filteredProducts = await db
         .select()
-        .from(products)
-        .where(eq(products.status, status))
-        .orderBy(desc(products.createdAt));
+        .from(dapps)
+        .where(eq(dapps.status, status))
+        .orderBy(desc(dapps.createdAt));
       return filteredProducts;
     } catch (error: any) {
       log(`Error in getProductsByStatus: ${error}`, "storage");
@@ -120,14 +120,14 @@ export class DatabaseStorage implements IStorage {
       // We need to find products where the tag is in the array of tags
       const filteredProducts = await db
         .select()
-        .from(products)
+        .from(dapps)
         .where(
           and(
-            eq(products.status, productStatus.APPROVED),
-            sql`${tag} = ANY(${products.tags})`
+            eq(dapps.status, productStatus.APPROVED),
+            sql`${tag} = ANY(${dapps.tags})`
           )
         )
-        .orderBy(desc(products.createdAt));
+        .orderBy(desc(dapps.createdAt));
       return filteredProducts;
     } catch (error: any) {
       log(`Error in getProductsByTag: ${error}`, "storage");
@@ -147,7 +147,7 @@ export class DatabaseStorage implements IStorage {
       };
       
       const [product] = await db
-        .insert(products)
+        .insert(dapps)
         .values(productWithDefaults)
         .returning();
         
@@ -162,12 +162,12 @@ export class DatabaseStorage implements IStorage {
     try {
       const now = new Date();
       const [updatedProduct] = await db
-        .update(products)
+        .update(dapps)
         .set({ 
           status, 
           updatedAt: now 
         })
-        .where(eq(products.id, id))
+        .where(eq(dapps.id, id))
         .returning();
         
       return updatedProduct;
@@ -183,18 +183,18 @@ export class DatabaseStorage implements IStorage {
       
       const searchResults = await db
         .select()
-        .from(products)
+        .from(dapps)
         .where(
           and(
-            eq(products.status, productStatus.APPROVED),
+            eq(dapps.status, productStatus.APPROVED),
             or(
-              like(sql`LOWER(${products.name})`, searchTermLower),
-              like(sql`LOWER(${products.description})`, searchTermLower)
+              like(sql`LOWER(${dapps.name})`, searchTermLower),
+              like(sql`LOWER(${dapps.description})`, searchTermLower)
               // Note: For tags, we would need a more complex query
             )
           )
         )
-        .orderBy(desc(products.createdAt));
+        .orderBy(desc(dapps.createdAt));
         
       return searchResults;
     } catch (error: any) {

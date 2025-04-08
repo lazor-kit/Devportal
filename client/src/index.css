@@ -61,12 +61,24 @@
   .glow-text {
     @apply text-transparent bg-clip-text bg-gradient-to-r from-[#00f7d2] to-[#68c6ff];
     text-shadow: 0 0 20px rgba(0, 247, 210, 0.2);
+    animation: glow-pulse 3s ease-in-out infinite;
   }
   
   /* Stronger glow text variant */
   .glow-text-strong {
     @apply text-transparent bg-clip-text bg-gradient-to-r from-[#00f7d2] to-[#68c6ff];
     text-shadow: 0 0 30px rgba(0, 247, 210, 0.4);
+    animation: glow-pulse-strong 3s ease-in-out infinite;
+  }
+  
+  @keyframes glow-pulse {
+    0%, 100% { text-shadow: 0 0 20px rgba(0, 247, 210, 0.2); }
+    50% { text-shadow: 0 0 25px rgba(0, 247, 210, 0.4); }
+  }
+  
+  @keyframes glow-pulse-strong {
+    0%, 100% { text-shadow: 0 0 30px rgba(0, 247, 210, 0.4); }
+    50% { text-shadow: 0 0 40px rgba(0, 247, 210, 0.6); }
   }
 
   /* Crypto buttons */
@@ -83,6 +95,53 @@
   
   .crypto-button:active {
     transform: translateY(0);
+  }
+  
+  /* Button with animated border effect */
+  .solana-button {
+    @apply relative overflow-hidden rounded-lg bg-black/50 text-white font-medium px-6 py-2.5 transition-all duration-300;
+    box-shadow: 0 0 10px rgba(0, 247, 210, 0.2);
+    z-index: 1;
+  }
+  
+  .solana-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #00f7d2, #68c6ff, #00f7d2);
+    background-size: 200% 200%;
+    z-index: -1;
+    animation: animatedGradient 3s linear infinite;
+    opacity: 0.2;
+    transition: opacity 0.3s ease;
+  }
+  
+  .solana-button::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 6px;
+    z-index: -1;
+  }
+  
+  .solana-button:hover::before {
+    opacity: 0.5;
+  }
+  
+  .solana-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(0, 247, 210, 0.4);
+  }
+  
+  .solana-button:active {
+    transform: translateY(0);
+  }
+  
+  @keyframes animatedGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
   
   /* Subtle animating border */
@@ -121,5 +180,68 @@
   /* Form input styling */
   input, textarea, select {
     @apply bg-black/40 text-white border-white/10 focus:border-primary/50 focus:ring-primary/20;
+  }
+  
+  /* dApp card with animated border effect */
+  .dapp-card {
+    @apply relative overflow-hidden backdrop-blur-sm bg-black/30 shadow-xl rounded-xl transition-all duration-300;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+    transform: translateY(0);
+  }
+  
+  .dapp-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    @apply rounded-xl;
+    background: linear-gradient(45deg, #00f7d2, #68c6ff, #9945ff, #14f195);
+    background-size: 400% 400%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .dapp-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  
+  .dapp-card:hover::before {
+    opacity: 0.3;
+    animation: shimmerAnimation 3s ease infinite;
+  }
+  
+  @keyframes shimmerAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Solana logo animation */
+  .solana-logo-pulse {
+    animation: solana-pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes solana-pulse {
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(0, 247, 210, 0.3)); }
+    50% { filter: drop-shadow(0 0 15px rgba(0, 247, 210, 0.6)); }
+  }
+  
+  /* Text glow effects */
+  .solana-text {
+    @apply font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#9945ff] to-[#14f195];
+    text-shadow: 0 0 10px rgba(20, 241, 149, 0.3);
+  }
+  
+  /* Floating animation */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
 }

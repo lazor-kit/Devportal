@@ -19,22 +19,23 @@ import {
 } from "@/components/ui/form";
 import { FormFileInput } from "@/components/ui/file-input";
 import { Card, CardContent } from "@/components/ui/card";
-import { productSubmissionSchema, ProductSubmission, availableTags } from "@shared/schema";
+import { dappSubmissionSchema, DappSubmission, availableTags } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, Twitter } from "lucide-react";
 
 const Submit = () => {
   const [, navigate] = useLocation();
   const { toast } = useToast();
   const [imageBase64, setImageBase64] = useState<string>("");
   
-  const form = useForm<ProductSubmission>({
-    resolver: zodResolver(productSubmissionSchema),
+  const form = useForm<DappSubmission>({
+    resolver: zodResolver(dappSubmissionSchema),
     defaultValues: {
       name: "",
       description: "",
       githubLink: "",
       demoLink: "",
+      twitterLink: "",
       image: "",
       tags: [],
       submittedBy: "Anonymous", // Default value
@@ -43,7 +44,7 @@ const Submit = () => {
   });
   
   const submitMutation = useMutation({
-    mutationFn: async (data: ProductSubmission) => {
+    mutationFn: async (data: DappSubmission) => {
       const response = await apiRequest("POST", "/api/products", data);
       return response.json();
     },
@@ -63,7 +64,7 @@ const Submit = () => {
     },
   });
   
-  const onSubmit = (data: ProductSubmission) => {
+  const onSubmit = (data: DappSubmission) => {
     // Add the base64 image to the form data
     const submissionData = {
       ...data,
@@ -76,8 +77,8 @@ const Submit = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="space-y-6 flex flex-col items-center">
         <div className="text-center w-full max-w-3xl">
-          <h1 className="text-3xl font-bold glow-text">Submit Your Project</h1>
-          <p className="text-slate-300 mt-2">Share your innovative web application with the community</p>
+          <h1 className="text-3xl font-bold glow-text">Submit Your Solana dApp</h1>
+          <p className="text-slate-300 mt-2">Share your innovative Solana dApp with the community</p>
         </div>
         
         <Form {...form}>
@@ -89,9 +90,9 @@ const Submit = () => {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-slate-200">Project Name *</FormLabel>
+                      <FormLabel className="text-slate-200">dApp Name *</FormLabel>
                       <FormControl>
-                        <Input placeholder="My Amazing Project" {...field} />
+                        <Input placeholder="My Solana dApp" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -106,13 +107,13 @@ const Submit = () => {
                       <FormLabel className="text-slate-200">Description *</FormLabel>
                       <FormControl>
                         <Textarea 
-                          placeholder="Describe your project, its features and what problem it solves..." 
+                          placeholder="Describe your dApp, its features and what problem it solves on Solana..." 
                           rows={4} 
                           {...field} 
                         />
                       </FormControl>
                       <FormDescription className="text-slate-400">
-                        Brief description for your project. Maximum 500 characters.
+                        Brief description for your Solana dApp. Maximum 500 characters.
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -124,16 +125,20 @@ const Submit = () => {
                   name="image"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-slate-200">Project Image *</FormLabel>
+                      <FormLabel className="text-slate-200">dApp Image/Logo *</FormLabel>
                       <FormControl>
                         <FormFileInput
                           name="image"
+                          preview={true}
                           onValueChange={(base64) => {
                             setImageBase64(base64);
                             field.onChange(base64);
                           }}
                         />
                       </FormControl>
+                      <FormDescription className="text-slate-400">
+                        Upload a square logo/image for your dApp (recommended size: 512x512px)
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -145,7 +150,7 @@ const Submit = () => {
                     name="githubLink"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-200">GitHub Repository Link *</FormLabel>
+                        <FormLabel className="text-slate-200">GitHub Repository *</FormLabel>
                         <FormControl>
                           <div className="relative">
                             <Github className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
@@ -166,12 +171,12 @@ const Submit = () => {
                     name="demoLink"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-200">Demo App Link *</FormLabel>
+                        <FormLabel className="text-slate-200">Live dApp URL *</FormLabel>
                         <FormControl>
                           <div className="relative">
                             <ExternalLink className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                             <Input 
-                              placeholder="https://myapp.vercel.app" 
+                              placeholder="https://mydapp.vercel.app" 
                               {...field} 
                               className="pl-10"
                             />
@@ -182,6 +187,30 @@ const Submit = () => {
                     )}
                   />
                 </div>
+                
+                <FormField
+                  control={form.control}
+                  name="twitterLink"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-slate-200">Twitter Account</FormLabel>
+                      <FormControl>
+                        <div className="relative">
+                          <Twitter className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                          <Input 
+                            placeholder="https://twitter.com/yourusername" 
+                            {...field} 
+                            className="pl-10"
+                          />
+                        </div>
+                      </FormControl>
+                      <FormDescription className="text-slate-400">
+                        Optional: Link to your project's Twitter account
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
                 
                 <FormField
                   control={form.control}
@@ -205,9 +234,9 @@ const Submit = () => {
                   name="tags"
                   render={() => (
                     <FormItem>
-                      <FormLabel className="text-slate-200">Tags *</FormLabel>
+                      <FormLabel className="text-slate-200">dApp Categories *</FormLabel>
                       <FormDescription className="text-slate-400">
-                        Select categories that best describe your project
+                        Select categories that best describe your Solana dApp
                       </FormDescription>
                       <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
                         {availableTags.map((tag) => (
@@ -229,7 +258,7 @@ const Submit = () => {
                                           ? field.onChange([...field.value, tag])
                                           : field.onChange(
                                               field.value?.filter(
-                                                (value) => value !== tag
+                                                (value: string) => value !== tag
                                               )
                                             );
                                       }}
@@ -279,20 +308,20 @@ const Submit = () => {
             </Card>
             
             <div className="flex justify-end">
-              <Button
+              <button
                 type="button"
-                variant="outline"
                 onClick={() => navigate("/")}
-                className="mr-3"
+                className="solana-button mr-3"
               >
                 Cancel
-              </Button>
-              <Button
+              </button>
+              <button
                 type="submit"
                 disabled={submitMutation.isPending}
+                className="crypto-button"
               >
-                {submitMutation.isPending ? "Submitting..." : "Submit for Review"}
-              </Button>
+                {submitMutation.isPending ? "Submitting..." : "Submit dApp for Review"}
+              </button>
             </div>
           </form>
         </Form>
