@@ -158,19 +158,19 @@ const AdminDashboard = () => {
           </TabsList>
           
           <TabsContent value={activeTab} className="mt-6">
-            <Card className="dark:bg-card bg-white">
+            <Card>
               <CardHeader className="pb-3">
-                <CardTitle className="dark:text-foreground text-gray-900">
+                <CardTitle>
                   {activeTab === "pending" ? "Pending Approvals" : 
                    activeTab === "approved" ? "Approved Projects" : "Rejected Projects"}
                 </CardTitle>
-                <CardDescription className="dark:text-slate-300 text-gray-700">
+                <CardDescription>
                   {activeTab === "pending" 
                     ? "Projects requiring review before being published" 
                     : "Projects that have been reviewed"}
                 </CardDescription>
               </CardHeader>
-              <CardContent className="dark:bg-card bg-white">
+              <CardContent>
                 {isLoading ? (
                   <div className="py-10 text-center">
                     <p>Loading projects...</p>
@@ -181,20 +181,20 @@ const AdminDashboard = () => {
                   </div>
                 ) : (
                   <div className="overflow-x-auto">
-                    <Table className="dark:bg-card bg-white">
-                      <TableHeader className="dark:bg-card bg-white">
-                        <TableRow className="dark:border-gray-700 border-gray-200">
-                          <TableHead className="dark:text-foreground text-gray-900">Project</TableHead>
-                          <TableHead className="dark:text-foreground text-gray-900">Submitted By</TableHead>
-                          <TableHead className="dark:text-foreground text-gray-900">Date</TableHead>
-                          <TableHead className="dark:text-foreground text-gray-900">Status</TableHead>
-                          <TableHead className="dark:text-foreground text-gray-900 text-right">Actions</TableHead>
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Project</TableHead>
+                          <TableHead>Submitted By</TableHead>
+                          <TableHead>Date</TableHead>
+                          <TableHead>Status</TableHead>
+                          <TableHead className="text-right">Actions</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
                         {products.map((product) => (
-                          <TableRow key={product.id} className="dark:border-gray-700 border-gray-200">
-                            <TableCell className="dark:bg-card bg-white">
+                          <TableRow key={product.id}>
+                            <TableCell>
                               <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
                                   <img
@@ -204,33 +204,33 @@ const AdminDashboard = () => {
                                   />
                                 </div>
                                 <div className="ml-4">
-                                  <div className="text-sm font-medium dark:text-primary text-gray-900">
+                                  <div className="text-sm font-medium text-primary">
                                     {product.name}
                                   </div>
-                                  <div className="text-sm dark:text-slate-400 text-gray-700 line-clamp-1">
+                                  <div className="text-sm text-slate-400 line-clamp-1">
                                     {product.description}
                                   </div>
                                 </div>
                               </div>
                             </TableCell>
-                            <TableCell className="dark:bg-card bg-white">
+                            <TableCell>
                               <div className="flex items-center">
                                 <Avatar className="h-8 w-8 mr-2">
                                   <AvatarFallback>
                                     {product.submittedBy[0].toUpperCase()}
                                   </AvatarFallback>
                                 </Avatar>
-                                <div className="text-sm dark:text-primary text-gray-900">
+                                <div className="text-sm text-primary">
                                   {product.submittedBy}
                                 </div>
                               </div>
                             </TableCell>
-                            <TableCell className="dark:bg-card bg-white">
-                              <div className="text-sm dark:text-slate-400 text-gray-700">
+                            <TableCell>
+                              <div className="text-sm text-slate-400">
                                 {new Date(product.createdAt).toLocaleDateString()}
                               </div>
                             </TableCell>
-                            <TableCell className="dark:bg-card bg-white">
+                            <TableCell>
                               <Badge
                                 variant={
                                   product.status === productStatus.PENDING
@@ -243,14 +243,13 @@ const AdminDashboard = () => {
                                 {product.status}
                               </Badge>
                             </TableCell>
-                            <TableCell className="text-right dark:bg-card bg-white">
+                            <TableCell className="text-right">
                               <div className="flex justify-end items-center">
                                 <div className="mr-2">
                                   <Button
                                     variant="outline"
                                     size="sm"
                                     onClick={() => openDialog(product, "view")}
-                                    className="dark:text-foreground text-gray-900"
                                   >
                                     <Eye className="h-4 w-4 mr-1" />
                                     View
@@ -294,18 +293,18 @@ const AdminDashboard = () => {
         
         {/* Action Dialog */}
         <Dialog open={actionDialog.open} onOpenChange={(open) => !open && closeDialog()}>
-          <DialogContent className="max-w-3xl dark:bg-card bg-white">
+          <DialogContent className="max-w-3xl">
             {actionDialog.product && (
               <>
                 <DialogHeader>
-                  <DialogTitle className="dark:text-foreground text-gray-900">
+                  <DialogTitle>
                     {actionDialog.action === "view"
                       ? "Project Details"
                       : actionDialog.action === "approve"
                       ? "Approve Project"
                       : "Reject Project"}
                   </DialogTitle>
-                  <DialogDescription className="dark:text-slate-300 text-gray-700">
+                  <DialogDescription>
                     {actionDialog.action === "view"
                       ? "View detailed information about this project"
                       : actionDialog.action === "approve"
@@ -323,8 +322,8 @@ const AdminDashboard = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-lg font-semibold dark:text-foreground text-gray-900">{actionDialog.product.name}</h3>
-                    <p className="text-sm dark:text-slate-300 text-gray-700">{actionDialog.product.description}</p>
+                    <h3 className="text-lg font-semibold">{actionDialog.product.name}</h3>
+                    <p className="text-sm text-slate-300">{actionDialog.product.description}</p>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {actionDialog.product.tags.map((tag) => (
                         <Badge key={tag} variant="outline">
@@ -333,32 +332,32 @@ const AdminDashboard = () => {
                       ))}
                     </div>
                     <div className="pt-2">
-                      <p className="text-sm dark:text-foreground text-gray-900">
+                      <p className="text-sm">
                         <strong>GitHub:</strong>{" "}
                         <a
                           href={actionDialog.product.githubLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="dark:text-primary text-green-600 hover:underline"
+                          className="text-primary hover:underline"
                         >
                           {actionDialog.product.githubLink}
                         </a>
                       </p>
-                      <p className="text-sm dark:text-foreground text-gray-900">
+                      <p className="text-sm">
                         <strong>Demo:</strong>{" "}
                         <a
                           href={actionDialog.product.demoLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="dark:text-primary text-green-600 hover:underline"
+                          className="text-primary hover:underline"
                         >
                           {actionDialog.product.demoLink}
                         </a>
                       </p>
-                      <p className="text-sm dark:text-foreground text-gray-900">
+                      <p className="text-sm">
                         <strong>Submitted By:</strong> {actionDialog.product.submittedBy}
                       </p>
-                      <p className="text-sm dark:text-foreground text-gray-900">
+                      <p className="text-sm">
                         <strong>Date:</strong>{" "}
                         {new Date(actionDialog.product.createdAt).toLocaleDateString()}
                       </p>
