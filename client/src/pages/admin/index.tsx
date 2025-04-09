@@ -136,7 +136,7 @@ const AdminDashboard = () => {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex items-center justify-center h-64">
-          <p className="text-gray-500">Loading...</p>
+          <p className="dark:text-gray-500 text-gray-700">Loading...</p>
         </div>
       </div>
     );
@@ -146,8 +146,8 @@ const AdminDashboard = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold glow-text">Admin Dashboard</h1>
-          <p className="text-slate-300">Review and manage submitted projects</p>
+          <h1 className="text-2xl font-bold dark:glow-text text-gray-900">Admin Dashboard</h1>
+          <p className="dark:text-slate-300 text-gray-700">Review and manage submitted projects</p>
         </div>
 
         <Tabs defaultValue="pending" value={activeTab} onValueChange={setActiveTab}>
@@ -159,7 +159,7 @@ const AdminDashboard = () => {
           
           <TabsContent value={activeTab} className="mt-6">
             <Card className="dark:bg-card bg-white">
-              <CardHeader className="pb-3">
+              <CardHeader className="pb-3 dark:bg-card bg-white">
                 <CardTitle className="dark:text-foreground text-gray-900">
                   {activeTab === "pending" ? "Pending Approvals" : 
                    activeTab === "approved" ? "Approved Projects" : "Rejected Projects"}
@@ -173,11 +173,11 @@ const AdminDashboard = () => {
               <CardContent className="dark:bg-card bg-white">
                 {isLoading ? (
                   <div className="py-10 text-center">
-                    <p>Loading projects...</p>
+                    <p className="dark:text-foreground text-gray-900">Loading projects...</p>
                   </div>
                 ) : products.length === 0 ? (
                   <div className="py-10 text-center">
-                    <p>No {activeTab} projects found.</p>
+                    <p className="dark:text-foreground text-gray-900">No {activeTab} projects found.</p>
                   </div>
                 ) : (
                   <div className="overflow-x-auto">
