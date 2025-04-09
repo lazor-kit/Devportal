@@ -56,7 +56,7 @@ const TagFilter = ({ selectedTags, onTagsChange }: TagFilterProps) => {
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-56 p-4">
+      <PopoverContent className={`w-56 p-4 ${theme === 'light' ? 'bg-white' : ''}`}>
         <div className="space-y-2">
           {availableTags.map((tag) => (
             <div key={tag} className="flex items-center space-x-2">
@@ -65,7 +65,7 @@ const TagFilter = ({ selectedTags, onTagsChange }: TagFilterProps) => {
                 checked={tempSelectedTags.includes(tag)}
                 onCheckedChange={() => handleTagToggle(tag)} 
               />
-              <Label htmlFor={`tag-${tag}`} className="flex-1 text-sm cursor-pointer">
+              <Label htmlFor={`tag-${tag}`} className={`flex-1 text-sm cursor-pointer ${theme === 'light' ? 'text-gray-900' : ''}`}>
                 {tag.charAt(0).toUpperCase() + tag.slice(1)}
               </Label>
             </div>
