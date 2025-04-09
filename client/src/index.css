@@ -196,6 +196,46 @@
     transform: translateY(0);
   }
   
+  /* Outline crypto buttons - Dark Theme */
+  [data-theme="dark"] .crypto-button-outline {
+    @apply relative overflow-hidden bg-transparent border border-[#9945ff]/30 text-primary font-medium rounded-lg transition-all duration-300;
+    box-shadow: 0 0 10px rgba(153, 69, 255, 0.2);
+  }
+  
+  [data-theme="dark"] .crypto-button-outline:hover {
+    @apply border-[#9945ff]/50 bg-[#9945ff]/10;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(153, 69, 255, 0.3);
+  }
+  
+  /* Outline crypto buttons - Light Theme */
+  [data-theme="light"] .crypto-button-outline {
+    @apply relative overflow-hidden bg-transparent border border-gray-300 text-gray-900 font-medium rounded-lg transition-all duration-300;
+    box-shadow: none;
+  }
+  
+  [data-theme="light"] .crypto-button-outline:hover {
+    @apply border-[#9945ff]/30 bg-gray-50 text-[#9945ff];
+    transform: translateY(-2px);
+    box-shadow: 0 0 5px rgba(153, 69, 255, 0.1);
+  }
+  
+  /* Default styling */
+  .crypto-button-outline {
+    @apply relative overflow-hidden bg-transparent border border-[#9945ff]/30 text-primary font-medium rounded-lg transition-all duration-300;
+    box-shadow: 0 0 10px rgba(153, 69, 255, 0.2);
+  }
+  
+  .crypto-button-outline:hover {
+    @apply border-[#9945ff]/50 bg-[#9945ff]/10;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(153, 69, 255, 0.3);
+  }
+  
+  .crypto-button-outline:active {
+    transform: translateY(0);
+  }
+  
   /* Button with animated border effect - Dark Theme */
   [data-theme="dark"] .solana-button {
     @apply relative overflow-hidden rounded-lg bg-black/50 text-white font-medium px-6 py-2.5 transition-all duration-300;
