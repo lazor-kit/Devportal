@@ -22,11 +22,13 @@ import { dappSubmissionSchema, DappSubmission, availableTags } from "@shared/sch
 import { useToast } from "@/hooks/use-toast";
 import { Github, ExternalLink, Twitter } from "lucide-react";
 import { RichTextEditor } from "@/components/ui/rich-text-editor";
+import { useTheme } from "@/hooks/use-theme";
 
 const Submit = () => {
   const [, navigate] = useLocation();
   const { toast } = useToast();
   const [imageBase64, setImageBase64] = useState<string>("");
+  const { theme } = useTheme();
   
   const form = useForm<DappSubmission>({
     resolver: zodResolver(dappSubmissionSchema),
@@ -78,7 +80,7 @@ const Submit = () => {
       <div className="space-y-6 flex flex-col items-center">
         <div className="text-center w-full max-w-3xl">
           <h1 className="text-3xl font-bold glow-text">Submit Your Solana dApp</h1>
-          <p className="text-slate-300 mt-2">Share your innovative Solana dApp with the community</p>
+          <p className={`mt-2 ${theme === 'dark' ? 'text-slate-300' : 'text-gray-600'}`}>Share your innovative Solana dApp with the community</p>
         </div>
         
         <Form {...form}>
@@ -90,7 +92,7 @@ const Submit = () => {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-slate-200">dApp Name *</FormLabel>
+                      <FormLabel className={theme === 'dark' ? 'text-slate-200' : 'text-gray-700'}>dApp Name *</FormLabel>
                       <FormControl>
                         <Input placeholder="My Solana dApp" {...field} />
                       </FormControl>
@@ -104,7 +106,7 @@ const Submit = () => {
                   name="description"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-slate-200">Description *</FormLabel>
+                      <FormLabel className={theme === 'dark' ? 'text-slate-200' : 'text-gray-700'}>Description *</FormLabel>
                       <FormControl>
                         <RichTextEditor
                           value={field.value}
@@ -113,7 +115,7 @@ const Submit = () => {
                           className="crypto-input"
                         />
                       </FormControl>
-                      <FormDescription className="text-slate-400">
+                      <FormDescription className={theme === 'dark' ? 'text-slate-400' : 'text-gray-500'}>
                         Brief description for your Solana dApp. You can format your text with bold, italics, bullet points and more.
                       </FormDescription>
                       <FormMessage />
@@ -126,7 +128,7 @@ const Submit = () => {
                   name="image"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-slate-200">dApp Image/Logo *</FormLabel>
+                      <FormLabel className={theme === 'dark' ? 'text-slate-200' : 'text-gray-700'}>dApp Image/Logo *</FormLabel>
                       <FormControl>
                         <FormFileInput
                           name="image"
@@ -137,7 +139,7 @@ const Submit = () => {
                           }}
                         />
                       </FormControl>
-                      <FormDescription className="text-slate-400">
+                      <FormDescription className={theme === 'dark' ? 'text-slate-400' : 'text-gray-500'}>
                         Upload a square logo/image for your dApp (recommended size: 512x512px)
                       </FormDescription>
                       <FormMessage />
@@ -151,7 +153,7 @@ const Submit = () => {
                     name="githubLink"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-200">GitHub Repository *</FormLabel>
+                        <FormLabel className={theme === 'dark' ? 'text-slate-200' : 'text-gray-700'}>GitHub Repository *</FormLabel>
                         <FormControl>
                           <div className="relative">
                             <Github className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
@@ -172,7 +174,7 @@ const Submit = () => {
                     name="demoLink"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-200">Live dApp URL *</FormLabel>
+                        <FormLabel className={theme === 'dark' ? 'text-slate-200' : 'text-gray-700'}>Live dApp URL *</FormLabel>
                         <FormControl>
                           <div className="relative">
                             <ExternalLink className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
@@ -194,7 +196,7 @@ const Submit = () => {
                   name="twitterLink"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-slate-200">Twitter Account</FormLabel>
+                      <FormLabel className={theme === 'dark' ? 'text-slate-200' : 'text-gray-700'}>Twitter Account</FormLabel>
                       <FormControl>
                         <div className="relative">
                           <Twitter className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
@@ -205,7 +207,7 @@ const Submit = () => {
                           />
                         </div>
                       </FormControl>
-                      <FormDescription className="text-slate-400">
+                      <FormDescription className={theme === 'dark' ? 'text-slate-400' : 'text-gray-500'}>
                         Optional: Link to your project's Twitter account
                       </FormDescription>
                       <FormMessage />
@@ -218,7 +220,7 @@ const Submit = () => {
                   name="submittedBy"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-slate-200">Your Name</FormLabel>
+                      <FormLabel className={theme === 'dark' ? 'text-slate-200' : 'text-gray-700'}>Your Name</FormLabel>
                       <FormControl>
                         <Input 
                           placeholder="Your name (optional)" 
@@ -235,8 +237,8 @@ const Submit = () => {
                   name="tags"
                   render={() => (
                     <FormItem>
-                      <FormLabel className="text-slate-200">dApp Categories *</FormLabel>
-                      <FormDescription className="text-slate-400">
+                      <FormLabel className={theme === 'dark' ? 'text-slate-200' : 'text-gray-700'}>dApp Categories *</FormLabel>
+                      <FormDescription className={theme === 'dark' ? 'text-slate-400' : 'text-gray-500'}>
                         Select categories that best describe your Solana dApp
                       </FormDescription>
                       <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
@@ -265,7 +267,7 @@ const Submit = () => {
                                       }}
                                     />
                                   </FormControl>
-                                  <FormLabel className="font-normal text-slate-300">
+                                  <FormLabel className={`font-normal ${theme === 'dark' ? 'text-slate-300' : 'text-gray-600'}`}>
                                     {tag.charAt(0).toUpperCase() + tag.slice(1)}
                                   </FormLabel>
                                 </FormItem>
@@ -283,7 +285,7 @@ const Submit = () => {
                   control={form.control}
                   name="termsAccepted"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 pt-4 border-t border-slate-700">
+                    <FormItem className={`flex flex-row items-start space-x-3 space-y-0 pt-4 border-t ${theme === 'dark' ? 'border-slate-700' : 'border-gray-200'}`}>
                       <FormControl>
                         <Checkbox
                           checked={field.value}
@@ -291,10 +293,10 @@ const Submit = () => {
                         />
                       </FormControl>
                       <div className="space-y-1 leading-none">
-                        <FormLabel className="text-slate-200">
+                        <FormLabel className={theme === 'dark' ? 'text-slate-200' : 'text-gray-700'}>
                           I agree to the terms and conditions
                         </FormLabel>
-                        <FormDescription className="text-slate-400">
+                        <FormDescription className={theme === 'dark' ? 'text-slate-400' : 'text-gray-500'}>
                           By submitting, you confirm that you have the rights to share this project and agree to our{" "}
                           <a href="#" className="text-primary hover:text-primary-dark">
                             Terms of Service
