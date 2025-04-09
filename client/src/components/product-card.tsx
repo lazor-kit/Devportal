@@ -25,7 +25,7 @@ const DappCard = ({ product }: DappCardProps) => {
         </div>
         <CardContent className="p-5 relative z-10">
           <div className="flex justify-between items-start">
-            <h3 className="text-lg font-semibold solana-text line-clamp-1 transition-colors duration-200">
+            <h3 className={`text-lg font-semibold ${theme === 'dark' ? 'solana-text' : 'text-gray-900'} line-clamp-1 transition-colors duration-200`}>
               {product.name}
             </h3>
             {product.createdAt && new Date(product.createdAt).getTime() > Date.now() - 7 * 24 * 60 * 60 * 1000 && (

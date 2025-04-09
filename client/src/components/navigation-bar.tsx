@@ -94,7 +94,7 @@ const NavigationBar = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <Button asChild className="crypto-button">
+              <Button asChild className={theme === 'dark' ? 'crypto-button' : 'bg-black text-white hover:bg-gray-800'}>
                 <Link href="/admin/login">Admin Login</Link>
               </Button>
             )}
@@ -177,7 +177,7 @@ const NavigationBar = () => {
                   ) : (
                     <Link 
                       href="/admin/login"
-                      className="crypto-button block px-3 py-2 rounded-md text-base font-medium text-center"
+                      className={`${theme === 'dark' ? 'crypto-button' : 'bg-black text-white hover:bg-gray-800'} block px-3 py-2 rounded-md text-base font-medium text-center`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Admin Login
