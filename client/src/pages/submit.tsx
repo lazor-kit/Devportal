@@ -79,13 +79,13 @@ const Submit = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="space-y-6 flex flex-col items-center">
         <div className="text-center w-full max-w-3xl">
-          <h1 className="text-3xl font-bold glow-text">Submit Your Solana dApp</h1>
+          <h1 className={`text-3xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>Submit Your Solana dApp</h1>
           <p className={`mt-2 ${theme === 'dark' ? 'text-slate-300' : 'text-gray-600'}`}>Share your innovative Solana dApp with the community</p>
         </div>
         
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full max-w-3xl">
-            <Card>
+            <Card className={theme === 'dark' ? '' : 'bg-white border border-gray-200'}>
               <CardContent className="p-6 space-y-6">
                 <FormField
                   control={form.control}
@@ -112,7 +112,7 @@ const Submit = () => {
                           value={field.value}
                           onChange={field.onChange}
                           placeholder="Describe your dApp, its features and what problem it solves on Solana..."
-                          className="crypto-input"
+                          className={theme === 'dark' ? "crypto-input" : "bg-white border border-gray-200 text-gray-900"}
                         />
                       </FormControl>
                       <FormDescription className={theme === 'dark' ? 'text-slate-400' : 'text-gray-500'}>
@@ -314,14 +314,14 @@ const Submit = () => {
               <button
                 type="button"
                 onClick={() => navigate("/")}
-                className="solana-button mr-3"
+                className={`mr-3 ${theme === 'dark' ? 'solana-button' : 'border border-gray-300 bg-white text-black hover:bg-gray-100 px-4 py-2 rounded-md'}`}
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={submitMutation.isPending}
-                className="crypto-button"
+                className={theme === 'dark' ? "crypto-button" : "bg-black text-white hover:bg-gray-800 px-4 py-2 rounded-md"}
               >
                 {submitMutation.isPending ? "Submitting..." : "Submit dApp for Review"}
               </button>
