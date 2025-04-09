@@ -68,7 +68,7 @@ const AdminLogin = () => {
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <Card className="card border-glow">
+        <Card className="card border-glow bg-green-50/30">
           <CardContent className="pt-6">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -77,9 +77,9 @@ const AdminLogin = () => {
                   name="username"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Username</FormLabel>
+                      <FormLabel className="text-gray-900">Username</FormLabel>
                       <FormControl>
-                        <Input placeholder="admin" autoComplete="username" {...field} />
+                        <Input placeholder="admin" autoComplete="username" className="text-gray-900" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -91,14 +91,14 @@ const AdminLogin = () => {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Password</FormLabel>
+                      <FormLabel className="text-gray-900">Password</FormLabel>
                       <FormControl>
                         <div className="relative">
                           <Input
                             type={showPassword ? "text" : "password"}
                             placeholder="••••••••"
                             autoComplete="current-password"
-                            className="pr-10"
+                            className="pr-10 text-gray-900"
                             {...field}
                           />
                           <button
@@ -126,7 +126,7 @@ const AdminLogin = () => {
                     <Checkbox id="remember-me" />
                     <label
                       htmlFor="remember-me"
-                      className="ml-2 block text-sm text-gray-300"
+                      className="ml-2 block text-sm text-gray-900"
                     >
                       Remember me
                     </label>
@@ -135,7 +135,7 @@ const AdminLogin = () => {
                   <div className="text-sm">
                     <a
                       href="#"
-                      className="font-medium text-primary hover:text-primary-dark"
+                      className="font-medium text-gray-900 hover:text-gray-700"
                     >
                       Forgot your password?
                     </a>
@@ -144,7 +144,7 @@ const AdminLogin = () => {
 
                 <Button
                   type="submit"
-                  className="w-full crypto-button"
+                  className="w-full bg-green-600 hover:bg-green-700 text-white"
                   disabled={form.formState.isSubmitting}
                 >
                   {form.formState.isSubmitting ? "Signing in..." : "Sign in"}
