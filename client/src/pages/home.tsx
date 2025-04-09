@@ -10,6 +10,7 @@ import Pagination from "@/components/pagination";
 import { Product, Dapp, ProductTag, DappTag } from "@shared/schema";
 import { Search } from "lucide-react";
 import { useDebounce } from "@/hooks/use-mobile";
+import { useTheme } from "@/hooks/use-theme";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -18,6 +19,7 @@ const Home = () => {
   const [selectedTags, setSelectedTags] = useState<ProductTag[]>([]);
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [currentPage, setCurrentPage] = useState(1);
+  const { theme } = useTheme();
   
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
   
@@ -59,8 +61,8 @@ const Home = () => {
       <div className="space-y-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
           <div>
-            <h1 className="text-2xl font-bold solana-text">Discover Solana dApps</h1>
-            <p className="text-slate-300">Browse innovative Solana blockchain applications from the developer community</p>
+            <h1 className={`text-2xl font-bold ${theme === 'dark' ? 'solana-text' : 'text-gray-900'}`}>Discover Solana dApps</h1>
+            <p className={theme === 'dark' ? 'text-slate-300' : 'text-gray-600'}>Browse innovative Solana blockchain applications from the developer community</p>
           </div>
           <div className="flex space-x-2">
             <TagFilter
@@ -128,8 +130,8 @@ const Home = () => {
         {/* No Results */}
         {!isLoading && filteredProducts.length === 0 && (
           <div className="text-center py-12">
-            <h3 className="mt-2 text-sm font-semibold solana-text">No dApps found</h3>
-            <p className="mt-1 text-sm text-slate-400">
+            <h3 className={`mt-2 text-sm font-semibold ${theme === 'dark' ? 'solana-text' : 'text-gray-900'}`}>No dApps found</h3>
+            <p className={`mt-1 text-sm ${theme === 'dark' ? 'text-slate-400' : 'text-gray-500'}`}>
               Try adjusting your search or filter to find what you're looking for.
             </p>
           </div>
