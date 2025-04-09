@@ -173,11 +173,11 @@ const AdminDashboard = () => {
               <CardContent className="dark:bg-card bg-white">
                 {isLoading ? (
                   <div className="py-10 text-center">
-                    <p>Loading projects...</p>
+                    <p className="dark:text-foreground text-gray-900">Loading projects...</p>
                   </div>
                 ) : products.length === 0 ? (
                   <div className="py-10 text-center">
-                    <p>No {activeTab} projects found.</p>
+                    <p className="dark:text-foreground text-gray-900">No {activeTab} projects found.</p>
                   </div>
                 ) : (
                   <div className="overflow-x-auto">
@@ -239,6 +239,7 @@ const AdminDashboard = () => {
                                     ? "secondary"
                                     : "destructive"
                                 }
+                                className="data-[theme=light]:text-gray-900 data-[theme=light]:border-gray-400"
                               >
                                 {product.status}
                               </Badge>
@@ -250,7 +251,7 @@ const AdminDashboard = () => {
                                     variant="outline"
                                     size="sm"
                                     onClick={() => openDialog(product, "view")}
-                                    className="dark:text-foreground text-gray-900"
+                                    className="dark:text-foreground text-gray-900 data-[theme=light]:bg-white data-[theme=light]:border-green-500"
                                   >
                                     <Eye className="h-4 w-4 mr-1" />
                                     View
@@ -327,7 +328,7 @@ const AdminDashboard = () => {
                     <p className="text-sm dark:text-slate-300 text-gray-700">{actionDialog.product.description}</p>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {actionDialog.product.tags.map((tag) => (
-                        <Badge key={tag} variant="outline">
+                        <Badge key={tag} variant="outline" className="dark:text-foreground text-gray-900 dark:border-gray-600 border-gray-400">
                           {tag}
                         </Badge>
                       ))}
@@ -369,13 +370,14 @@ const AdminDashboard = () => {
                 <DialogFooter>
                   {actionDialog.action !== "view" ? (
                     <>
-                      <Button variant="outline" onClick={closeDialog}>
+                      <Button variant="outline" onClick={closeDialog} className="data-[theme=light]:bg-white data-[theme=light]:border-gray-300 data-[theme=light]:text-gray-900">
                         Cancel
                       </Button>
                       <Button 
                         onClick={handleAction}
                         disabled={updateProductMutation.isPending}
                         variant={actionDialog.action === "approve" ? "default" : "destructive"}
+                        className={actionDialog.action === "approve" ? "data-[theme=light]:bg-green-600 data-[theme=light]:text-white" : ""}
                       >
                         {updateProductMutation.isPending
                           ? "Processing..."
@@ -385,7 +387,7 @@ const AdminDashboard = () => {
                       </Button>
                     </>
                   ) : (
-                    <Button onClick={closeDialog}>Close</Button>
+                    <Button onClick={closeDialog} className="data-[theme=light]:bg-white data-[theme=light]:border-green-500 data-[theme=light]:text-gray-900">Close</Button>
                   )}
                 </DialogFooter>
               </>
