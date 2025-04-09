@@ -20,58 +20,44 @@ const Footer = () => {
         
         <nav className="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
           <div className="px-5 py-2">
-            <Link href="/">
-              <a className={`text-base ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors duration-200`}>
-                About
-              </a>
+            <Link href="/" className={`text-base ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors duration-200`}>
+              About
             </Link>
           </div>
 
           <div className="px-5 py-2">
-            <Link href="/">
-              <a className={`text-base ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors duration-200`}>
-                Blog
-              </a>
+            <Link href="/" className={`text-base ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors duration-200`}>
+              Blog
             </Link>
           </div>
 
           <div className="px-5 py-2">
-            <Link href="/">
-              <a className={`text-base ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors duration-200`}>
-                Jobs
-              </a>
+            <Link href="/" className={`text-base ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors duration-200`}>
+              Jobs
             </Link>
           </div>
 
           <div className="px-5 py-2">
-            <Link href="/">
-              <a className={`text-base ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors duration-200`}>
-                Press
-              </a>
+            <Link href="/" className={`text-base ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors duration-200`}>
+              Press
             </Link>
           </div>
 
           <div className="px-5 py-2">
-            <Link href="/">
-              <a className={`text-base ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors duration-200`}>
-                Privacy
-              </a>
+            <Link href="/" className={`text-base ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors duration-200`}>
+              Privacy
             </Link>
           </div>
 
           <div className="px-5 py-2">
-            <Link href="/">
-              <a className={`text-base ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors duration-200`}>
-                Terms
-              </a>
+            <Link href="/" className={`text-base ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors duration-200`}>
+              Terms
             </Link>
           </div>
 
           <div className="px-5 py-2">
-            <Link href="/">
-              <a className={`text-base ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors duration-200`}>
-                Contact
-              </a>
+            <Link href="/" className={`text-base ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors duration-200`}>
+              Contact
             </Link>
           </div>
         </nav>
