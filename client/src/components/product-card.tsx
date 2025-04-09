@@ -75,7 +75,7 @@ const DappCard = ({ product }: DappCardProps) => {
           </div>
           
           <div className="absolute bottom-5 right-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <Badge variant="outline" className="bg-[#9945ff]/10 text-[#9945ff] border-[#9945ff]/20">
+            <Badge variant="outline" className="bg-[#0f766e]/10 text-[#0f766e] border-[#0f766e]/20">
               View details
             </Badge>
           </div>
