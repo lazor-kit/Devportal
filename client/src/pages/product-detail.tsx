@@ -134,7 +134,7 @@ const ProductDetail = () => {
                     href={product.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center text-sm ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#9945ff]'}`}
+                    className={`inline-flex items-center text-sm ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#10b981]'}`}
                   >
                     <Github className="mr-1.5 h-4 w-4" />
                     GitHub Repository
@@ -143,7 +143,7 @@ const ProductDetail = () => {
                     href={product.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center text-sm ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#9945ff]'}`}
+                    className={`inline-flex items-center text-sm ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#10b981]'}`}
                   >
                     <ExternalLink className="mr-1.5 h-4 w-4" />
                     Live Demo
@@ -153,7 +153,7 @@ const ProductDetail = () => {
                       href={product.twitterLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`inline-flex items-center text-sm ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#9945ff]'}`}
+                      className={`inline-flex items-center text-sm ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#10b981]'}`}
                     >
                       <Twitter className="mr-1.5 h-4 w-4" />
                       X Account
@@ -176,7 +176,7 @@ const ProductDetail = () => {
           
           <CardFooter className={`px-6 py-4 ${theme === 'light' ? 'bg-white' : 'bg-background'} ${theme === 'dark' ? 'border-t border-gray-800' : 'border-t border-gray-200'}`}>
             <div className="flex justify-between items-center w-full">
-              <Link href="/" className={`inline-flex items-center ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#9945ff]'}`}>
+              <Link href="/" className={`inline-flex items-center ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#10b981]'}`}>
                 <ChevronLeft className="mr-1.5 h-4 w-4" />
                 Back to all projects
               </Link>
