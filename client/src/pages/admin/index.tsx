@@ -146,8 +146,8 @@ const AdminDashboard = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold dark:glow-text text-gray-900 dark:text-white">Admin Dashboard</h1>
-          <p className="text-gray-700 dark:text-slate-300">Review and manage submitted projects</p>
+          <h1 className="text-2xl font-bold dark:glow-text text-gray-900 dark:text-gray-100">Admin Dashboard</h1>
+          <p className="text-gray-700 dark:text-gray-200">Review and manage submitted projects</p>
         </div>
 
         <Tabs defaultValue="pending" value={activeTab} onValueChange={setActiveTab}>
