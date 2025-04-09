@@ -405,7 +405,7 @@
   [data-theme="light"] input, 
   [data-theme="light"] textarea, 
   [data-theme="light"] select {
-    @apply bg-white text-gray-800 border-gray-200 focus:border-[#3b82f6]/50 focus:ring-[#3b82f6]/20;
+    @apply bg-white text-gray-800 border-gray-200 focus:border-[#10b981]/50 focus:ring-[#10b981]/20;
   }
   
   [data-theme="light"] input::placeholder,
@@ -546,7 +546,7 @@
   }
   
   [data-theme="dark"] .rich-text-content a {
-    @apply text-[#3b82f6] underline hover:text-[#3b82f6]/80;
+    @apply text-[#10b981] underline hover:text-[#10b981]/80;
   }
   
   [data-theme="dark"] .rich-text-content blockquote {
@@ -579,7 +579,7 @@
   }
   
   [data-theme="light"] .rich-text-content a {
-    @apply text-[#3b82f6] underline hover:text-[#3b82f6]/80;
+    @apply text-[#10b981] underline hover:text-[#10b981]/80;
   }
   
   [data-theme="light"] .rich-text-content blockquote {
@@ -647,7 +647,7 @@
   }
   
   .rich-text-content a {
-    @apply text-[#3b82f6] underline hover:text-[#3b82f6]/80;
+    @apply text-[#10b981] underline hover:text-[#10b981]/80;
   }
   
   .rich-text-content blockquote {
