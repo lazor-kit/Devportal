@@ -10,6 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Filter } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { useTheme } from "@/hooks/use-theme";
 
 interface TagFilterProps {
   selectedTags: ProductTag[];
@@ -18,6 +19,7 @@ interface TagFilterProps {
 
 const TagFilter = ({ selectedTags, onTagsChange }: TagFilterProps) => {
   const [tempSelectedTags, setTempSelectedTags] = useState<ProductTag[]>(selectedTags);
+  const { theme } = useTheme();
   
   const handleTagToggle = (tag: ProductTag) => {
     setTempSelectedTags((prev) => {
@@ -41,7 +43,10 @@ const TagFilter = ({ selectedTags, onTagsChange }: TagFilterProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline" className="flex items-center gap-2">
+        <Button 
+          variant="outline" 
+          className={`flex items-center gap-2 ${theme === 'light' ? 'bg-black text-white hover:bg-gray-800 border-black' : ''}`}
+        >
           <Filter className="h-4 w-4" />
           Filter by Tags
           {selectedTags.length > 0 && (
