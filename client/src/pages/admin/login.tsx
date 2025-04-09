@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { loginSchema, Login } from "@shared/schema";
 import { useAuth } from "@/hooks/use-auth";
+import { useTheme } from "@/hooks/use-theme";
 import { Eye, EyeOff } from "lucide-react";
 import {
   Card,
@@ -27,6 +28,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 const AdminLogin = () => {
   const [, navigate] = useLocation();
   const { user, login } = useAuth();
+  const { theme } = useTheme();
   const [showPassword, setShowPassword] = useState(false);
 
   // Toggle password visibility
@@ -59,10 +61,10 @@ const AdminLogin = () => {
   return (
     <div className="min-h-[80vh] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        <h2 className={`mt-6 text-center text-3xl font-extrabold ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}>
           Admin Login
         </h2>
-        <p className="mt-2 text-center text-sm text-gray-900">
+        <p className={`mt-2 text-center text-sm ${theme === 'light' ? 'text-gray-900' : 'text-gray-300'}`}>
           Sign in to access the admin dashboard
         </p>
       </div>
@@ -77,9 +79,9 @@ const AdminLogin = () => {
                   name="username"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-gray-900">Username</FormLabel>
+                      <FormLabel className={theme === 'light' ? 'text-gray-900' : 'text-gray-300'}>Username</FormLabel>
                       <FormControl>
-                        <Input placeholder="admin" autoComplete="username" className="text-gray-900" {...field} />
+                        <Input placeholder="admin" autoComplete="username" className={theme === 'light' ? 'text-gray-900' : 'text-white'} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -91,14 +93,14 @@ const AdminLogin = () => {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-gray-900">Password</FormLabel>
+                      <FormLabel className={theme === 'light' ? 'text-gray-900' : 'text-gray-300'}>Password</FormLabel>
                       <FormControl>
                         <div className="relative">
                           <Input
                             type={showPassword ? "text" : "password"}
                             placeholder="••••••••"
                             autoComplete="current-password"
-                            className="pr-10 text-gray-900"
+                            className={`pr-10 ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}
                             {...field}
                           />
                           <button
@@ -126,7 +128,7 @@ const AdminLogin = () => {
                     <Checkbox id="remember-me" />
                     <label
                       htmlFor="remember-me"
-                      className="ml-2 block text-sm text-gray-900"
+                      className={`ml-2 block text-sm ${theme === 'light' ? 'text-gray-900' : 'text-gray-300'}`}
                     >
                       Remember me
                     </label>
@@ -135,7 +137,7 @@ const AdminLogin = () => {
                   <div className="text-sm">
                     <a
                       href="#"
-                      className="font-medium text-gray-900 hover:text-gray-700"
+                      className={`font-medium ${theme === 'light' ? 'text-gray-900 hover:text-gray-700' : 'text-gray-300 hover:text-gray-100'}`}
                     >
                       Forgot your password?
                     </a>
