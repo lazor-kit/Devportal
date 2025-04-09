@@ -14,7 +14,7 @@ const Footer = () => {
         <div className="flex justify-center mb-8">
           <div className="cursor-pointer flex items-center gap-2">
             <Zap className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold glow-text">CryptoShowcase</span>
+            <span className={`text-xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>CryptoShowcase</span>
           </div>
         </div>
         

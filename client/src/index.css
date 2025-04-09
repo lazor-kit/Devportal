@@ -408,6 +408,11 @@
     @apply bg-white text-gray-800 border-gray-200 focus:border-[#9945ff]/50 focus:ring-[#9945ff]/20;
   }
   
+  [data-theme="light"] input::placeholder,
+  [data-theme="light"] textarea::placeholder {
+    @apply text-gray-500;
+  }
+  
   /* Default styling */
   input, textarea, select {
     @apply bg-black/40 text-white border-white/10 focus:border-primary/50 focus:ring-primary/20;
