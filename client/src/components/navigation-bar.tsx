@@ -14,7 +14,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useAuth } from "@/hooks/use-auth";
+import { useTheme } from "@/hooks/use-theme";
 import { Menu, X, Zap } from "lucide-react";
+import ThemeToggle from "./theme-toggle";
 
 const NavigationBar = () => {
   const [location] = useLocation();
@@ -28,8 +30,13 @@ const NavigationBar = () => {
 
   const isActiveLink = (path: string) => location === path;
 
+  const { theme } = useTheme();
+
   return (
-    <nav className="bg-black/40 backdrop-blur-md border-b border-white/10">
+    <nav className={theme === 'dark' 
+      ? "bg-black/40 backdrop-blur-md border-b border-white/10" 
+      : "bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm"
+    }>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex">
@@ -47,7 +54,9 @@ const NavigationBar = () => {
                   className={`${
                     isActiveLink(link.href)
                       ? "border-primary text-primary"
-                      : "border-transparent text-gray-400 hover:border-gray-500 hover:text-gray-200"
+                      : theme === 'dark'
+                        ? "border-transparent text-gray-400 hover:border-gray-500 hover:text-gray-200"
+                        : "border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900"
                   } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium h-full`}
                 >
                   {link.name}
@@ -56,7 +65,9 @@ const NavigationBar = () => {
             </div>
           </div>
           
-          <div className="hidden sm:ml-6 sm:flex sm:items-center">
+          <div className="hidden sm:ml-6 sm:flex sm:items-center space-x-2">
+            <ThemeToggle />
+            
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -92,12 +103,22 @@ const NavigationBar = () => {
           <div className="flex items-center sm:hidden">
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="mr-2 text-gray-200">
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className={`mr-2 ${theme === 'dark' ? 'text-gray-200' : 'text-gray-600'}`}
+                >
                   <Menu className="h-6 w-6" />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="bg-black/90 backdrop-blur-md border-r border-white/10">
+              <SheetContent 
+                side="left" 
+                className={theme === 'dark' 
+                  ? "bg-black/90 backdrop-blur-md border-r border-white/10" 
+                  : "bg-white/95 backdrop-blur-md border-r border-gray-200"
+                }
+              >
                 <div className="flex flex-col space-y-4 py-4">
                   {navLinks.map((link) => (
                     <Link 
@@ -106,19 +127,33 @@ const NavigationBar = () => {
                       className={`${
                         isActiveLink(link.href)
                           ? "bg-primary/20 text-primary"
-                          : "text-gray-300 hover:bg-black/40 hover:text-white"
+                          : theme === 'dark'
+                            ? "text-gray-300 hover:bg-black/40 hover:text-white"
+                            : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
                       } block px-3 py-2 rounded-md text-base font-medium`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {link.name}
                     </Link>
                   ))}
+
+                  <div className="flex items-center px-3 py-2">
+                    <span className={theme === 'dark' ? "text-gray-300 mr-2" : "text-gray-600 mr-2"}>
+                      Theme:
+                    </span>
+                    <ThemeToggle />
+                  </div>
+
                   {user ? (
                     <>
                       {user.isAdmin && (
                         <Link 
                           href="/admin"
-                          className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-black/40 hover:text-white"
+                          className={`block px-3 py-2 rounded-md text-base font-medium ${
+                            theme === 'dark' 
+                              ? "text-gray-300 hover:bg-black/40 hover:text-white" 
+                              : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                          }`}
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           Admin Dashboard
@@ -126,7 +161,11 @@ const NavigationBar = () => {
                       )}
                       <Button
                         variant="outline"
-                        className="w-full justify-start border-white/10 text-gray-300"
+                        className={`w-full justify-start ${
+                          theme === 'dark' 
+                            ? "border-white/10 text-gray-300" 
+                            : "border-gray-200 text-gray-600"
+                        }`}
                         onClick={() => {
                           logout();
                           setMobileMenuOpen(false);
