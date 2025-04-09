@@ -102,8 +102,8 @@ const ProductDetail = () => {
                 <h1 className={`text-2xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>{product.name}</h1>
                 {isNew && (
                   <Badge variant="secondary" className={theme === 'dark' 
-                    ? "bg-purple-900 text-purple-100 hover:bg-purple-800" 
-                    : "bg-purple-100 text-purple-800 hover:bg-purple-200"
+                    ? "bg-green-900 text-green-100 hover:bg-green-800" 
+                    : "bg-green-100 text-green-800 hover:bg-green-200"
                   }>
                     New
                   </Badge>
