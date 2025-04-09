@@ -151,65 +151,50 @@ const AdminDashboard = () => {
         </div>
 
         <Tabs defaultValue="pending" value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="bg-black border border-gray-800">
-            <TabsTrigger 
-              value="pending" 
-              className="data-[state=active]:bg-gray-900 data-[state=active]:text-white data-[state=inactive]:text-gray-400"
-            >
-              Pending Approvals
-            </TabsTrigger>
-            <TabsTrigger 
-              value="approved" 
-              className="data-[state=active]:bg-gray-900 data-[state=active]:text-white data-[state=inactive]:text-gray-400"
-            >
-              Approved
-            </TabsTrigger>
-            <TabsTrigger 
-              value="rejected" 
-              className="data-[state=active]:bg-gray-900 data-[state=active]:text-white data-[state=inactive]:text-gray-400"
-            >
-              Rejected
-            </TabsTrigger>
+          <TabsList>
+            <TabsTrigger value="pending">Pending Approvals</TabsTrigger>
+            <TabsTrigger value="approved">Approved</TabsTrigger>
+            <TabsTrigger value="rejected">Rejected</TabsTrigger>
           </TabsList>
           
           <TabsContent value={activeTab} className="mt-6">
-            <Card className="bg-black border-gray-800">
+            <Card className="dark:bg-card bg-white">
               <CardHeader className="pb-3">
-                <CardTitle className="text-white">
+                <CardTitle className="dark:text-foreground text-gray-900">
                   {activeTab === "pending" ? "Pending Approvals" : 
                    activeTab === "approved" ? "Approved Projects" : "Rejected Projects"}
                 </CardTitle>
-                <CardDescription className="text-gray-400">
+                <CardDescription className="dark:text-slate-300 text-gray-700">
                   {activeTab === "pending" 
                     ? "Projects requiring review before being published" 
                     : "Projects that have been reviewed"}
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="dark:bg-card bg-white">
                 {isLoading ? (
                   <div className="py-10 text-center">
-                    <p className="text-gray-400">Loading projects...</p>
+                    <p>Loading projects...</p>
                   </div>
                 ) : products.length === 0 ? (
                   <div className="py-10 text-center">
-                    <p className="text-gray-400">No {activeTab} projects found.</p>
+                    <p>No {activeTab} projects found.</p>
                   </div>
                 ) : (
                   <div className="overflow-x-auto">
-                    <Table className="bg-black border-gray-800">
-                      <TableHeader className="bg-black">
-                        <TableRow className="border-gray-800 hover:bg-black/50">
-                          <TableHead className="text-gray-300">Project</TableHead>
-                          <TableHead className="text-gray-300">Submitted By</TableHead>
-                          <TableHead className="text-gray-300">Date</TableHead>
-                          <TableHead className="text-gray-300">Status</TableHead>
-                          <TableHead className="text-gray-300 text-right">Actions</TableHead>
+                    <Table className="dark:bg-card bg-white">
+                      <TableHeader className="dark:bg-card bg-white">
+                        <TableRow className="dark:border-gray-700 border-gray-200">
+                          <TableHead className="dark:text-foreground text-gray-900">Project</TableHead>
+                          <TableHead className="dark:text-foreground text-gray-900">Submitted By</TableHead>
+                          <TableHead className="dark:text-foreground text-gray-900">Date</TableHead>
+                          <TableHead className="dark:text-foreground text-gray-900">Status</TableHead>
+                          <TableHead className="dark:text-foreground text-gray-900 text-right">Actions</TableHead>
                         </TableRow>
                       </TableHeader>
-                      <TableBody className="bg-black">
+                      <TableBody>
                         {products.map((product) => (
-                          <TableRow key={product.id} className="border-gray-800 hover:bg-gray-900/50">
-                            <TableCell className="text-gray-300">
+                          <TableRow key={product.id} className="dark:border-gray-700 border-gray-200">
+                            <TableCell className="dark:bg-card bg-white">
                               <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
                                   <img
@@ -219,33 +204,33 @@ const AdminDashboard = () => {
                                   />
                                 </div>
                                 <div className="ml-4">
-                                  <div className="text-sm font-medium text-primary">
+                                  <div className="text-sm font-medium dark:text-primary text-gray-900">
                                     {product.name}
                                   </div>
-                                  <div className="text-sm text-slate-400 line-clamp-1">
+                                  <div className="text-sm dark:text-slate-400 text-gray-700 line-clamp-1">
                                     {product.description}
                                   </div>
                                 </div>
                               </div>
                             </TableCell>
-                            <TableCell className="text-gray-300">
+                            <TableCell className="dark:bg-card bg-white">
                               <div className="flex items-center">
-                                <Avatar className="h-8 w-8 mr-2 bg-gray-800 text-gray-300">
-                                  <AvatarFallback className="bg-gray-800 text-gray-300">
+                                <Avatar className="h-8 w-8 mr-2">
+                                  <AvatarFallback>
                                     {product.submittedBy[0].toUpperCase()}
                                   </AvatarFallback>
                                 </Avatar>
-                                <div className="text-sm text-gray-300">
+                                <div className="text-sm dark:text-primary text-gray-900">
                                   {product.submittedBy}
                                 </div>
                               </div>
                             </TableCell>
-                            <TableCell className="text-gray-300">
-                              <div className="text-sm text-gray-400">
+                            <TableCell className="dark:bg-card bg-white">
+                              <div className="text-sm dark:text-slate-400 text-gray-700">
                                 {new Date(product.createdAt).toLocaleDateString()}
                               </div>
                             </TableCell>
-                            <TableCell className="text-gray-300">
+                            <TableCell className="dark:bg-card bg-white">
                               <Badge
                                 variant={
                                   product.status === productStatus.PENDING
@@ -254,19 +239,18 @@ const AdminDashboard = () => {
                                     ? "secondary"
                                     : "destructive"
                                 }
-                                className="bg-transparent"
                               >
                                 {product.status}
                               </Badge>
                             </TableCell>
-                            <TableCell className="text-right text-gray-300">
+                            <TableCell className="text-right dark:bg-card bg-white">
                               <div className="flex justify-end items-center">
                                 <div className="mr-2">
                                   <Button
                                     variant="outline"
                                     size="sm"
                                     onClick={() => openDialog(product, "view")}
-                                    className="border-gray-700 text-gray-300 hover:bg-gray-900 hover:text-white"
+                                    className="dark:text-foreground text-gray-900"
                                   >
                                     <Eye className="h-4 w-4 mr-1" />
                                     View
@@ -279,7 +263,7 @@ const AdminDashboard = () => {
                                       variant="ghost"
                                       size="sm"
                                       onClick={() => openDialog(product, "approve")}
-                                      className="text-green-500 hover:text-green-400 hover:bg-black/50"
+                                      className="text-green-600 hover:text-green-900"
                                     >
                                       <Check className="h-4 w-4 mr-1" />
                                       Approve
@@ -288,7 +272,7 @@ const AdminDashboard = () => {
                                       variant="ghost"
                                       size="sm"
                                       onClick={() => openDialog(product, "reject")}
-                                      className="text-red-500 hover:text-red-400 hover:bg-black/50"
+                                      className="text-red-600 hover:text-red-900"
                                     >
                                       <X className="h-4 w-4 mr-1" />
                                       Reject
@@ -310,18 +294,18 @@ const AdminDashboard = () => {
         
         {/* Action Dialog */}
         <Dialog open={actionDialog.open} onOpenChange={(open) => !open && closeDialog()}>
-          <DialogContent className="max-w-3xl bg-black border-gray-800 text-white">
+          <DialogContent className="max-w-3xl dark:bg-card bg-white">
             {actionDialog.product && (
               <>
                 <DialogHeader>
-                  <DialogTitle className="text-white">
+                  <DialogTitle className="dark:text-foreground text-gray-900">
                     {actionDialog.action === "view"
                       ? "Project Details"
                       : actionDialog.action === "approve"
                       ? "Approve Project"
                       : "Reject Project"}
                   </DialogTitle>
-                  <DialogDescription className="text-gray-400">
+                  <DialogDescription className="dark:text-slate-300 text-gray-700">
                     {actionDialog.action === "view"
                       ? "View detailed information about this project"
                       : actionDialog.action === "approve"
@@ -339,43 +323,43 @@ const AdminDashboard = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-lg font-semibold text-white">{actionDialog.product.name}</h3>
-                    <p className="text-sm text-gray-400">{actionDialog.product.description}</p>
+                    <h3 className="text-lg font-semibold dark:text-foreground text-gray-900">{actionDialog.product.name}</h3>
+                    <p className="text-sm dark:text-slate-300 text-gray-700">{actionDialog.product.description}</p>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {actionDialog.product.tags.map((tag) => (
-                        <Badge key={tag} variant="outline" className="bg-transparent text-gray-300 border-gray-700">
+                        <Badge key={tag} variant="outline">
                           {tag}
                         </Badge>
                       ))}
                     </div>
                     <div className="pt-2">
-                      <p className="text-sm text-gray-300">
-                        <strong className="text-gray-200">GitHub:</strong>{" "}
+                      <p className="text-sm dark:text-foreground text-gray-900">
+                        <strong>GitHub:</strong>{" "}
                         <a
                           href={actionDialog.product.githubLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-primary hover:text-primary/80"
+                          className="dark:text-primary text-green-600 hover:underline"
                         >
                           {actionDialog.product.githubLink}
                         </a>
                       </p>
-                      <p className="text-sm text-gray-300">
-                        <strong className="text-gray-200">Demo:</strong>{" "}
+                      <p className="text-sm dark:text-foreground text-gray-900">
+                        <strong>Demo:</strong>{" "}
                         <a
                           href={actionDialog.product.demoLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-primary hover:text-primary/80"
+                          className="dark:text-primary text-green-600 hover:underline"
                         >
                           {actionDialog.product.demoLink}
                         </a>
                       </p>
-                      <p className="text-sm text-gray-300">
-                        <strong className="text-gray-200">Submitted By:</strong> {actionDialog.product.submittedBy}
+                      <p className="text-sm dark:text-foreground text-gray-900">
+                        <strong>Submitted By:</strong> {actionDialog.product.submittedBy}
                       </p>
-                      <p className="text-sm text-gray-300">
-                        <strong className="text-gray-200">Date:</strong>{" "}
+                      <p className="text-sm dark:text-foreground text-gray-900">
+                        <strong>Date:</strong>{" "}
                         {new Date(actionDialog.product.createdAt).toLocaleDateString()}
                       </p>
                     </div>
@@ -385,18 +369,13 @@ const AdminDashboard = () => {
                 <DialogFooter>
                   {actionDialog.action !== "view" ? (
                     <>
-                      <Button 
-                        variant="outline" 
-                        onClick={closeDialog}
-                        className="border-gray-700 text-gray-300 hover:bg-gray-900 hover:text-gray-100"
-                      >
+                      <Button variant="outline" onClick={closeDialog}>
                         Cancel
                       </Button>
                       <Button 
                         onClick={handleAction}
                         disabled={updateProductMutation.isPending}
                         variant={actionDialog.action === "approve" ? "default" : "destructive"}
-                        className={actionDialog.action === "approve" ? "bg-primary hover:bg-primary/80" : ""}
                       >
                         {updateProductMutation.isPending
                           ? "Processing..."
@@ -406,12 +385,7 @@ const AdminDashboard = () => {
                       </Button>
                     </>
                   ) : (
-                    <Button 
-                      onClick={closeDialog}
-                      className="bg-primary hover:bg-primary/80"
-                    >
-                      Close
-                    </Button>
+                    <Button onClick={closeDialog}>Close</Button>
                   )}
                 </DialogFooter>
               </>
