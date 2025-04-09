@@ -146,8 +146,8 @@ const AdminDashboard = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold glow-text">Admin Dashboard</h1>
-          <p className="text-slate-300">Review and manage submitted projects</p>
+          <h1 className="text-2xl font-bold dark:glow-text text-gray-900 dark:text-white">Admin Dashboard</h1>
+          <p className="text-gray-700 dark:text-slate-300">Review and manage submitted projects</p>
         </div>
 
         <Tabs defaultValue="pending" value={activeTab} onValueChange={setActiveTab}>
@@ -322,8 +322,8 @@ const AdminDashboard = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-lg font-semibold">{actionDialog.product.name}</h3>
-                    <p className="text-sm text-slate-300">{actionDialog.product.description}</p>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{actionDialog.product.name}</h3>
+                    <p className="text-sm text-gray-700 dark:text-slate-300">{actionDialog.product.description}</p>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {actionDialog.product.tags.map((tag) => (
                         <Badge key={tag} variant="outline">
@@ -332,7 +332,7 @@ const AdminDashboard = () => {
                       ))}
                     </div>
                     <div className="pt-2">
-                      <p className="text-sm">
+                      <p className="text-sm text-gray-800 dark:text-slate-200">
                         <strong>GitHub:</strong>{" "}
                         <a
                           href={actionDialog.product.githubLink}
@@ -343,7 +343,7 @@ const AdminDashboard = () => {
                           {actionDialog.product.githubLink}
                         </a>
                       </p>
-                      <p className="text-sm">
+                      <p className="text-sm text-gray-800 dark:text-slate-200">
                         <strong>Demo:</strong>{" "}
                         <a
                           href={actionDialog.product.demoLink}
@@ -354,10 +354,10 @@ const AdminDashboard = () => {
                           {actionDialog.product.demoLink}
                         </a>
                       </p>
-                      <p className="text-sm">
+                      <p className="text-sm text-gray-800 dark:text-slate-200">
                         <strong>Submitted By:</strong> {actionDialog.product.submittedBy}
                       </p>
-                      <p className="text-sm">
+                      <p className="text-sm text-gray-800 dark:text-slate-200">
                         <strong>Date:</strong>{" "}
                         {new Date(actionDialog.product.createdAt).toLocaleDateString()}
                       </p>
