@@ -24,7 +24,7 @@ const NavigationBar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Showcase", href: "/" },
+    { name: "Dev Portal", href: "/" },
     { name: "Submit Project", href: "/submit" },
   ];
 
