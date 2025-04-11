@@ -538,9 +538,11 @@
   
   /* Solana logo animation */
   .solana-logo-pulse {
-    animation: solana-pulse 2s ease-in-out infinite;
+    /* Remove the animation for the logo */
+    animation: none;
   }
   
+  /* Keep the keyframes definition but not using it for the logo */
   @keyframes solana-pulse {
     0%, 100% { filter: drop-shadow(0 0 5px rgba(153, 69, 255, 0.3)); }
     50% { filter: drop-shadow(0 0 15px rgba(153, 69, 255, 0.6)); }
