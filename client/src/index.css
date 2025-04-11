@@ -103,18 +103,18 @@
     animation: none;
   }
   
-  /* Glowing text for headings - Light Theme */
+  /* Text for headings - Light Theme (simplified) */
   [data-theme="light"] .glow-text {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#9945ff] to-[#6e6e6e];
+    @apply text-[#9945ff];
     text-shadow: none;
     animation: none;
   }
   
-  /* Default styling */
+  /* Default styling (simplified) */
   .glow-text {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#9945ff] to-[#6e6e6e];
-    text-shadow: 0 0 20px rgba(153, 69, 255, 0.3);
-    animation: glow-pulse 3s ease-in-out infinite;
+    @apply text-[#9945ff];
+    text-shadow: none;
+    animation: none;
   }
   
   /* Stronger text variant - Dark Theme (simplified) */
@@ -124,18 +124,18 @@
     animation: none;
   }
   
-  /* Stronger glow text variant - Light Theme */
+  /* Stronger text variant - Light Theme (simplified) */
   [data-theme="light"] .glow-text-strong {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#9945ff] to-[#6e6e6e];
+    @apply text-[#9945ff];
     text-shadow: none;
     animation: none;
   }
   
   /* Default styling */
   .glow-text-strong {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#9945ff] to-[#6e6e6e];
-    text-shadow: 0 0 30px rgba(153, 69, 255, 0.5);
-    animation: glow-pulse-strong 3s ease-in-out infinite;
+    @apply text-[#9945ff];
+    text-shadow: none;
+    animation: none;
   }
   
   @keyframes glow-pulse {
