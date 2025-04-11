@@ -424,8 +424,7 @@
     inset: 0;
     z-index: -1;
     @apply rounded-xl;
-    background: linear-gradient(45deg, #10b981, #10b981, #6e6e6e, #000000);
-    background-size: 400% 400%;
+    background: #9945ff;
     opacity: 0;
     transition: opacity 0.3s ease;
   }
@@ -455,8 +454,7 @@
     inset: 0;
     z-index: -1;
     @apply rounded-xl;
-    background: linear-gradient(45deg, #10b981, #10b981, #6e6e6e, #ffffff);
-    background-size: 400% 400%;
+    background: #9945ff;
     opacity: 0;
     transition: opacity 0.3s ease;
   }
@@ -492,26 +490,26 @@
   }
   
   @keyframes solana-pulse {
-    0%, 100% { filter: drop-shadow(0 0 5px rgba(0, 247, 210, 0.3)); }
-    50% { filter: drop-shadow(0 0 15px rgba(0, 247, 210, 0.6)); }
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(153, 69, 255, 0.3)); }
+    50% { filter: drop-shadow(0 0 15px rgba(153, 69, 255, 0.6)); }
   }
   
   /* Text glow effects - Dark Theme */
   [data-theme="dark"] .solana-text {
-    @apply font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#9945ff] to-[#14f195];
-    text-shadow: 0 0 10px rgba(20, 241, 149, 0.3);
+    @apply font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#9945ff] to-[#bd9eff];
+    text-shadow: 0 0 10px rgba(153, 69, 255, 0.3);
   }
   
   /* Text glow effects - Light Theme */
   [data-theme="light"] .solana-text {
-    @apply font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#9945ff] to-[#6e6e6e];
+    @apply font-bold text-[#9945ff];
     text-shadow: none;
   }
   
   /* Default styling */
   .solana-text {
-    @apply font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#9945ff] to-[#14f195];
-    text-shadow: 0 0 10px rgba(20, 241, 149, 0.3);
+    @apply font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#9945ff] to-[#bd9eff];
+    text-shadow: 0 0 10px rgba(153, 69, 255, 0.3);
   }
   
   /* Floating animation */
@@ -571,7 +569,7 @@
   }
   
   [data-theme="light"] .rich-text-content a {
-    @apply text-[#10b981] underline hover:text-[#10b981]/80;
+    @apply text-[#9945ff] underline hover:text-[#9945ff]/80;
   }
   
   [data-theme="light"] .rich-text-content blockquote {
@@ -639,7 +637,7 @@
   }
   
   .rich-text-content a {
-    @apply text-[#10b981] underline hover:text-[#10b981]/80;
+    @apply text-[#9945ff] underline hover:text-[#9945ff]/80;
   }
   
   .rich-text-content blockquote {
@@ -690,7 +688,7 @@
   
   /* Admin login card styling */
   .admin-login-card {
-    @apply bg-green-50/50 relative;
+    @apply bg-purple-50/50 relative;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   }
 
@@ -700,10 +698,8 @@
     inset: -1px;
     z-index: -1;
     @apply rounded-xl;
-    background: linear-gradient(90deg, #10b981, #6e6e6e, #10b981);
-    background-size: 200% 200%;
-    animation: borderAnimation 4s linear infinite;
-    opacity: 0.3;
+    background: #9945ff;
+    opacity: 0.1;
   }
   
   /* Toast styling - Light Theme */
