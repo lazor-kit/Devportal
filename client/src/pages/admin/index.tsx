@@ -146,8 +146,8 @@ const AdminDashboard = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold dark:glow-text text-gray-900 dark:text-primary">Admin Dashboard</h1>
-          <p className="text-gray-700 dark:text-gray-200">Review and manage submitted projects</p>
+          <h1 className="text-2xl font-bold dark:glow-text text-gray-900 dark:text-primary">Lazor.kit Admin Dashboard</h1>
+          <p className="text-gray-700 dark:text-gray-200">Review and manage submitted Lazor.kit project submissions</p>
         </div>
 
         <Tabs defaultValue="pending" value={activeTab} onValueChange={setActiveTab}>
@@ -166,8 +166,8 @@ const AdminDashboard = () => {
                 </CardTitle>
                 <CardDescription>
                   {activeTab === "pending" 
-                    ? "Projects requiring review before being published" 
-                    : "Projects that have been reviewed"}
+                    ? "Lazor.kit projects requiring review before being published to the showcase" 
+                    : "Lazor.kit projects that have been reviewed"}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -299,17 +299,17 @@ const AdminDashboard = () => {
                 <DialogHeader>
                   <DialogTitle>
                     {actionDialog.action === "view"
-                      ? "Project Details"
+                      ? "Lazor.kit Project Details"
                       : actionDialog.action === "approve"
-                      ? "Approve Project"
-                      : "Reject Project"}
+                      ? "Approve Lazor.kit Project"
+                      : "Reject Lazor.kit Project"}
                   </DialogTitle>
                   <DialogDescription>
                     {actionDialog.action === "view"
-                      ? "View detailed information about this project"
+                      ? "View detailed information about this Lazor.kit project"
                       : actionDialog.action === "approve"
-                      ? "This project will be published and visible to all users"
-                      : "This project will be rejected and not visible to users"}
+                      ? "This project will be published to the showcase and visible to all users"
+                      : "This project will be rejected and not visible in the showcase"}
                   </DialogDescription>
                 </DialogHeader>
                 

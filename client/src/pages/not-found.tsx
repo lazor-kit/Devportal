@@ -14,12 +14,12 @@ export default function NotFound() {
           </div>
 
           <p className="mt-4 text-sm text-slate-300">
-            The page you're looking for doesn't exist or has been moved.
+            The Lazor.kit project or page you're looking for doesn't exist or has been moved.
           </p>
           
           <div className="mt-6 flex justify-center">
             <Link href="/">
-              <Button className="crypto-button">Back to Home</Button>
+              <Button className="crypto-button">Back to Showcase</Button>
             </Link>
           </div>
         </CardContent>
