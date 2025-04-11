@@ -79,8 +79,8 @@ const Submit = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="space-y-6 flex flex-col items-center">
         <div className="text-center w-full max-w-3xl">
-          <h1 className={`text-3xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>Submit Your Solana dApp</h1>
-          <p className={`mt-2 ${theme === 'dark' ? 'text-slate-300' : 'text-gray-600'}`}>Share your innovative Solana dApp with the community</p>
+          <h1 className={`text-3xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>Submit Your Lazor.kit Project</h1>
+          <p className={`mt-2 ${theme === 'dark' ? 'text-slate-300' : 'text-gray-600'}`}>Share your Solana dApp that's powered by Lazor.kit - the simple, secure, and fast solution for sign-in-with-Solana without wallet apps</p>
         </div>
         
         <Form {...form}>
@@ -111,12 +111,12 @@ const Submit = () => {
                         <RichTextEditor
                           value={field.value}
                           onChange={field.onChange}
-                          placeholder="Describe your dApp, its features and what problem it solves on Solana..."
+                          placeholder="Describe how your project uses Lazor.kit, its features and what problem it solves on Solana..."
                           className={theme === 'dark' ? "crypto-input" : "bg-white border border-gray-200 text-gray-900"}
                         />
                       </FormControl>
                       <FormDescription className={theme === 'dark' ? 'text-slate-400' : 'text-gray-500'}>
-                        Brief description for your Solana dApp. You can format your text with bold, italics, bullet points and more.
+                        Brief description of your Lazor.kit-powered project. Include how you're using Lazor.kit to enhance the user experience.
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -237,9 +237,9 @@ const Submit = () => {
                   name="tags"
                   render={() => (
                     <FormItem>
-                      <FormLabel className={theme === 'dark' ? 'text-slate-200' : 'text-gray-700'}>dApp Categories *</FormLabel>
+                      <FormLabel className={theme === 'dark' ? 'text-slate-200' : 'text-gray-700'}>Project Categories *</FormLabel>
                       <FormDescription className={theme === 'dark' ? 'text-slate-400' : 'text-gray-500'}>
-                        Select categories that best describe your Solana dApp
+                        Select categories that best describe your Lazor.kit-powered project
                       </FormDescription>
                       <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
                         {availableTags.map((tag) => (
@@ -323,7 +323,7 @@ const Submit = () => {
                 disabled={submitMutation.isPending}
                 className={theme === 'dark' ? "crypto-button" : "bg-black text-white hover:bg-gray-800 px-4 py-2 rounded-md"}
               >
-                {submitMutation.isPending ? "Submitting..." : "Submit dApp for Review"}
+                {submitMutation.isPending ? "Submitting..." : "Submit Lazor.kit Project for Review"}
               </button>
             </div>
           </form>
