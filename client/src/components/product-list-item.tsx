@@ -16,7 +16,7 @@ const ProductListItem = ({ product }: ProductListItemProps) => {
   const { theme } = useTheme();
 
   return (
-    <div className={`card group overflow-hidden transition-all duration-300 flex flex-col md:flex-row ${
+    <div className={`card group overflow-hidden transition-all duration-300 flex flex-col md:flex-row hover:translate-y-[-5px] ${
       theme === 'dark' ? 'bg-black/30' : 'bg-white shadow-md'
     }`}>
       <div className="md:w-1/4 relative overflow-hidden">
@@ -85,7 +85,7 @@ const ProductListItem = ({ product }: ProductListItemProps) => {
                 }`}
               >
                 View Details
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1 animate-gentle-bounce" />
               </Button>
             </Link>
           </div>

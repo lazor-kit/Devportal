@@ -140,8 +140,14 @@ const Home = () => {
         {/* Grid View */}
         {!isLoading && viewMode === "grid" && paginatedProducts.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {paginatedProducts.map((product) => (
-              <DappCard key={product.id} product={product} />
+            {paginatedProducts.map((product, index) => (
+              <div 
+                key={product.id} 
+                className={`animate-fade-in-up delay-${Math.min(index * 100, 300)}`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <DappCard product={product} />
+              </div>
             ))}
           </div>
         )}
@@ -149,8 +155,14 @@ const Home = () => {
         {/* List View */}
         {!isLoading && viewMode === "list" && paginatedProducts.length > 0 && (
           <div className="space-y-4">
-            {paginatedProducts.map((product) => (
-              <ProductListItem key={product.id} product={product} />
+            {paginatedProducts.map((product, index) => (
+              <div 
+                key={product.id} 
+                className="animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <ProductListItem product={product} />
+              </div>
             ))}
           </div>
         )}

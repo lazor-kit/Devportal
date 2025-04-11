@@ -171,7 +171,7 @@ const TagBadge = ({ tag, onClick, className = "", active = false }: TagBadgeProp
   return (
     <Badge
       variant="outline"
-      className={`${baseClasses} ${colorClasses} ${onClick ? 'cursor-pointer' : ''} ${className}`}
+      className={`${baseClasses} ${colorClasses} ${onClick ? 'cursor-pointer' : ''} ${className} badge-hover-effect`}
       onClick={onClick}
     >
       {!active && colors.icon}

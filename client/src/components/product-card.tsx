@@ -13,13 +13,13 @@ interface DappCardProps {
 const DappCard = ({ product }: DappCardProps) => {
   const { theme } = useTheme();
   return (
-    <Card className="dapp-card group overflow-hidden h-full relative">
+    <Card className="dapp-card group overflow-hidden h-full relative transition-all duration-300 hover:translate-y-[-8px]">
       <Link href={`/product/${product.id}`} className="block h-full">
         <div className="h-48 w-full overflow-hidden relative">
           <img
             src={product.image}
             alt={product.name}
-            className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/20"></div>
         </div>
