@@ -24,8 +24,8 @@ const NavigationBar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Discover", href: "/" },
-    { name: "Submit", href: "/submit" },
+    { name: "Showcase", href: "/" },
+    { name: "Submit Project", href: "/submit" },
   ];
 
   const isActiveLink = (path: string) => location === path;
@@ -43,7 +43,7 @@ const NavigationBar = () => {
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="cursor-pointer flex items-center gap-2">
                 <Zap className="h-6 w-6 text-primary" />
-                <span className={`text-xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>LazorShowcase</span>
+                <span className={`text-xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>Lazor.kit</span>
               </Link>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">

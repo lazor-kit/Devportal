@@ -14,7 +14,7 @@ const Footer = () => {
         <div className="flex justify-center mb-8">
           <div className="cursor-pointer flex items-center gap-2">
             <Zap className="h-6 w-6 text-primary" />
-            <span className={`text-xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>LazorShowcase</span>
+            <span className={`text-xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>Lazor.kit Showcase</span>
           </div>
         </div>
         
@@ -81,11 +81,11 @@ const Footer = () => {
         
         <div className="mt-8 flex flex-col items-center">
           <p className={`text-center text-base ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-            &copy; 2025 LazorShowcase. All rights reserved.
+            &copy; 2025 Lazor.kit Showcase. All rights reserved.
           </p>
           <div className={`mt-2 flex items-center text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}>
             <span className="inline-block h-2 w-2 rounded-full bg-primary/50 mr-2"></span>
-            Powered by Solana
+            Powered by Solana • Sign-in without wallet apps
           </div>
         </div>
       </div>
