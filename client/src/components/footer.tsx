@@ -13,16 +13,11 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
         <div className="flex justify-center mb-8">
           <div className="cursor-pointer flex items-center gap-2">
-            <div className={`h-8 w-8 animate-float solana-logo-pulse`}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" className="h-full w-full">
-                <path
-                  d="M100,120 L300,120 L240,200 L300,280 L100,280 L160,200 Z"
-                  stroke={theme === 'dark' ? "#FFFFFF" : "#9945FF"}
-                  strokeWidth="5"
-                  fill="none"
-                />
-              </svg>
-            </div>
+            <img 
+              src="/assets/images/lazor-logo.jpg" 
+              alt="Lazor.kit Logo" 
+              className="h-8 w-8 rounded animate-float solana-logo-pulse"
+            />
             <span className={`text-xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>Lazor.kit Showcase</span>
           </div>
         </div>
