@@ -24,7 +24,7 @@ const NavigationBar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Dev Portal", href: "/" },
+    { name: "Explore", href: "/" },
     { name: "Submit Project", href: "/submit" },
   ];
 
@@ -47,7 +47,7 @@ const NavigationBar = () => {
                   alt="Lazor.kit Logo" 
                   className="h-8 w-8 rounded animate-gentle-bounce solana-logo-pulse"
                 />
-                <span className={`text-xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>Lazor.kit Dev Portal</span>
+                <span className={`text-xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>Lazor.kit</span>
               </Link>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">

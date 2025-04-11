@@ -18,7 +18,7 @@ const Footer = () => {
               alt="Lazor.kit Logo" 
               className="h-8 w-8 rounded animate-float solana-logo-pulse"
             />
-            <span className={`text-xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>Lazor.kit Dev Portal</span>
+            <span className={`text-xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>Lazor.kit</span>
           </div>
         </div>
         
@@ -85,7 +85,7 @@ const Footer = () => {
         
         <div className="mt-8 flex flex-col items-center">
           <p className={`text-center text-base ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-            &copy; 2025 Lazor.kit Dev Portal. All rights reserved.
+            &copy; 2025 Lazor.kit DevPortal. All rights reserved.
           </p>
           <div className={`mt-2 flex items-center text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}>
             <span className="inline-block h-2 w-2 rounded-full bg-primary/50 mr-2"></span>
