@@ -57,12 +57,12 @@ const Home = () => {
   );
   
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 home-gradient-bg">
       <div className="space-y-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
           <div>
-            <h1 className={`text-2xl font-bold ${theme === 'dark' ? 'solana-text' : 'text-gray-900'}`}>Lazor.kit Showcase</h1>
-            <p className={theme === 'dark' ? 'text-slate-300' : 'text-gray-600'}>Discover Solana dApps powered by Lazor.kit - the simple, secure, and fast solution for sign-in-with-Solana without wallet apps</p>
+            <h1 className={`text-2xl font-bold ${theme === 'dark' ? 'solana-text' : 'text-gray-900'} animate-float`}>Lazor.kit Showcase</h1>
+            <p className={`${theme === 'dark' ? 'text-slate-300' : 'text-gray-600'} animate-fade-in-up`}>Discover Solana dApps powered by Lazor.kit - the simple, secure, and fast solution for sign-in-with-Solana without wallet apps</p>
           </div>
           <div className="flex space-x-2">
             <TagFilter

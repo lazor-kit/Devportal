@@ -385,6 +385,58 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0.7; }
   }
+
+  @keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+  }
+
+  @keyframes gentle-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  @keyframes fade-in-up {
+    0% { 
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-float {
+    animation: floating 6s ease-in-out infinite;
+  }
+
+  .animate-gentle-bounce {
+    animation: gentle-bounce 3s ease-in-out infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.5s ease-out forwards;
+  }
+
+  .delay-100 {
+    animation-delay: 0.1s;
+  }
+
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .delay-300 {
+    animation-delay: 0.3s;
+  }
+
+  .home-gradient-bg {
+    background: linear-gradient(120deg, rgba(153, 69, 255, 0.05), rgba(0, 0, 0, 0), rgba(153, 69, 255, 0.08));
+    background-size: 400% 400%;
+    animation: animatedGradient 15s ease infinite;
+  }
   
   /* Form input styling - Dark Theme */
   [data-theme="dark"] input, 
