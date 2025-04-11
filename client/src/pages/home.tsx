@@ -83,7 +83,7 @@ const Home = () => {
           </div>
           <Input
             type="text"
-            placeholder="Search Lazor.kit projects..."
+            placeholder="Search projects..."
             className="pl-10"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -130,9 +130,9 @@ const Home = () => {
         {/* No Results */}
         {!isLoading && filteredProducts.length === 0 && (
           <div className="text-center py-12">
-            <h3 className={`mt-2 text-sm font-semibold ${theme === 'dark' ? 'solana-text' : 'text-gray-900'}`}>No Lazor.kit projects found</h3>
+            <h3 className={`mt-2 text-sm font-semibold ${theme === 'dark' ? 'solana-text' : 'text-gray-900'}`}>No projects found</h3>
             <p className={`mt-1 text-sm ${theme === 'dark' ? 'text-slate-400' : 'text-gray-500'}`}>
-              Try adjusting your search or filter to find what you're looking for, or submit your own Lazor.kit project!
+              Try adjusting your search or filter to find what you're looking for, or submit your own project!
             </p>
           </div>
         )}

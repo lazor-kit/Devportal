@@ -166,8 +166,8 @@ const AdminDashboard = () => {
                 </CardTitle>
                 <CardDescription>
                   {activeTab === "pending" 
-                    ? "Lazor.kit projects requiring review before being published to the showcase" 
-                    : "Lazor.kit projects that have been reviewed"}
+                    ? "Projects requiring review before being published" 
+                    : "Projects that have been reviewed"}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -299,17 +299,17 @@ const AdminDashboard = () => {
                 <DialogHeader>
                   <DialogTitle>
                     {actionDialog.action === "view"
-                      ? "Lazor.kit Project Details"
+                      ? "Project Details"
                       : actionDialog.action === "approve"
-                      ? "Approve Lazor.kit Project"
-                      : "Reject Lazor.kit Project"}
+                      ? "Approve Project"
+                      : "Reject Project"}
                   </DialogTitle>
                   <DialogDescription>
                     {actionDialog.action === "view"
-                      ? "View detailed information about this Lazor.kit project"
+                      ? "View detailed information about this project"
                       : actionDialog.action === "approve"
-                      ? "This project will be published to the showcase and visible to all users"
-                      : "This project will be rejected and not visible in the showcase"}
+                      ? "This project will be published and visible to all users"
+                      : "This project will be rejected and not visible to users"}
                   </DialogDescription>
                 </DialogHeader>
                 

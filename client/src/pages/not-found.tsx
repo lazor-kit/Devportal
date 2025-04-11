@@ -17,12 +17,12 @@ export default function NotFound() {
           </div>
 
           <p className={`mt-4 text-sm ${theme === 'dark' ? 'text-slate-300' : 'text-gray-600'}`}>
-            The Lazor.kit project or page you're looking for doesn't exist or has been moved.
+            The page you're looking for doesn't exist or has been moved.
           </p>
           
           <div className="mt-6 flex justify-center">
             <Link href="/">
-              <Button className={theme === 'dark' ? "crypto-button" : "bg-black text-white hover:bg-gray-800"}>Back to Showcase</Button>
+              <Button className={theme === 'dark' ? "crypto-button" : "bg-black text-white hover:bg-gray-800"}>Back to Home</Button>
             </Link>
           </div>
         </CardContent>

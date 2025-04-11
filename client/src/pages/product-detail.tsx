@@ -66,14 +66,14 @@ const ProductDetail = () => {
         <Card className={theme === 'light' ? 'bg-white' : ''}>
           <CardContent className="p-6">
             <div className="text-center py-10">
-              <h3 className={`text-lg font-medium ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>Lazor.kit project not found</h3>
+              <h3 className={`text-lg font-medium ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>Product not found</h3>
               <p className={`mt-2 text-sm ${theme === 'dark' ? 'text-slate-400' : 'text-gray-500'}`}>
-                The Lazor.kit project you're looking for doesn't exist or has been removed.
+                The product you're looking for doesn't exist or has been removed.
               </p>
               <Link href="/">
                 <Button className="mt-4 crypto-button">
                   <ChevronLeft className="mr-2 h-4 w-4" />
-                  Back to Showcase
+                  Back to all projects
                 </Button>
               </Link>
             </div>
@@ -178,7 +178,7 @@ const ProductDetail = () => {
             <div className="flex justify-between items-center w-full">
               <Link href="/" className={`inline-flex items-center ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#9945ff]'}`}>
                 <ChevronLeft className="mr-1.5 h-4 w-4" />
-                Back to Showcase
+                Back to all projects
               </Link>
               <Button variant="outline" size="sm" className="inline-flex items-center crypto-button-outline">
                 <Share2 className="mr-1.5 h-4 w-4" />
