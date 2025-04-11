@@ -102,8 +102,8 @@ const ProductDetail = () => {
                 <h1 className={`text-2xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>{product.name}</h1>
                 {isNew && (
                   <Badge variant="secondary" className={theme === 'dark' 
-                    ? "bg-green-900 text-green-100 hover:bg-green-800" 
-                    : "bg-green-100 text-green-800 hover:bg-green-200"
+                    ? "bg-purple-900 text-purple-100 hover:bg-purple-800" 
+                    : "bg-purple-100 text-purple-800 hover:bg-purple-200"
                   }>
                     New
                   </Badge>
@@ -134,7 +134,7 @@ const ProductDetail = () => {
                     href={product.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center text-sm ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#10b981]'}`}
+                    className={`inline-flex items-center text-sm ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#9945ff]'}`}
                   >
                     <Github className="mr-1.5 h-4 w-4" />
                     GitHub Repository
@@ -143,7 +143,7 @@ const ProductDetail = () => {
                     href={product.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center text-sm ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#10b981]'}`}
+                    className={`inline-flex items-center text-sm ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#9945ff]'}`}
                   >
                     <ExternalLink className="mr-1.5 h-4 w-4" />
                     Live Demo
@@ -153,7 +153,7 @@ const ProductDetail = () => {
                       href={product.twitterLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`inline-flex items-center text-sm ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#10b981]'}`}
+                      className={`inline-flex items-center text-sm ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#9945ff]'}`}
                     >
                       <Twitter className="mr-1.5 h-4 w-4" />
                       X Account
@@ -176,7 +176,7 @@ const ProductDetail = () => {
           
           <CardFooter className={`px-6 py-4 ${theme === 'light' ? 'bg-white' : 'bg-background'} ${theme === 'dark' ? 'border-t border-gray-800' : 'border-t border-gray-200'}`}>
             <div className="flex justify-between items-center w-full">
-              <Link href="/" className={`inline-flex items-center ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#10b981]'}`}>
+              <Link href="/" className={`inline-flex items-center ${theme === 'dark' ? 'text-primary hover:text-primary-dark' : 'text-gray-700 hover:text-[#9945ff]'}`}>
                 <ChevronLeft className="mr-1.5 h-4 w-4" />
                 Back to all projects
               </Link>
