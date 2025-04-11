@@ -323,7 +323,7 @@ const Submit = () => {
                 disabled={submitMutation.isPending}
                 className={theme === 'dark' ? "crypto-button" : "bg-black text-white hover:bg-gray-800 px-4 py-2 rounded-md"}
               >
-                {submitMutation.isPending ? "Submitting..." : "Submit Lazor.kit Project for Review"}
+                {submitMutation.isPending ? "Submitting..." : "Submit"}
               </button>
             </div>
           </form>

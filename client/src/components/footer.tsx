@@ -13,7 +13,11 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
         <div className="flex justify-center mb-8">
           <div className="cursor-pointer flex items-center gap-2">
-            <Zap className="h-6 w-6 text-primary" />
+            <img 
+              src="/assets/lazor-logo.svg" 
+              alt="Lazor.kit Logo" 
+              className={`h-8 w-8 ${theme === 'dark' ? 'invert' : ''} animate-float solana-logo-pulse`}
+            />
             <span className={`text-xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>Lazor.kit Showcase</span>
           </div>
         </div>

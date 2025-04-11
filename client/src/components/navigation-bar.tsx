@@ -42,7 +42,11 @@ const NavigationBar = () => {
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="cursor-pointer flex items-center gap-2">
-                <Zap className="h-6 w-6 text-primary" />
+                <img 
+                  src="/assets/lazor-logo.svg" 
+                  alt="Lazor.kit Logo" 
+                  className={`h-8 w-8 ${theme === 'dark' ? 'invert' : ''} animate-gentle-bounce solana-logo-pulse`}
+                />
                 <span className={`text-xl font-bold ${theme === 'dark' ? 'glow-text' : 'text-gray-900'}`}>Lazor.kit</span>
               </Link>
             </div>
