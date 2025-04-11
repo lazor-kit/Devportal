@@ -262,7 +262,7 @@ const AdminDashboard = () => {
                                       variant="ghost"
                                       size="sm"
                                       onClick={() => openDialog(product, "approve")}
-                                      className="text-green-600 hover:text-green-900"
+                                      className="text-purple-600 hover:text-purple-900"
                                     >
                                       <Check className="h-4 w-4 mr-1" />
                                       Approve

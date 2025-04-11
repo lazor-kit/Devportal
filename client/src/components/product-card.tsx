@@ -29,7 +29,7 @@ const DappCard = ({ product }: DappCardProps) => {
               {product.name}
             </h3>
             {product.createdAt && new Date(product.createdAt).getTime() > Date.now() - 7 * 24 * 60 * 60 * 1000 && (
-              <Badge className="bg-[#14f195]/20 text-[#14f195] border border-[#14f195]/30 hover:bg-[#14f195]/30">
+              <Badge className="bg-[#9945ff]/20 text-[#9945ff] border border-[#9945ff]/30 hover:bg-[#9945ff]/30">
                 <Zap className="mr-1 h-3 w-3" /> New
               </Badge>
             )}
@@ -75,7 +75,7 @@ const DappCard = ({ product }: DappCardProps) => {
           </div>
           
           <div className="absolute bottom-5 right-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <Badge variant="outline" className="bg-[#0f766e]/10 text-[#0f766e] border-[#0f766e]/20">
+            <Badge variant="outline" className="bg-[#9945ff]/10 text-[#9945ff] border-[#9945ff]/20">
               View details
             </Badge>
           </div>
